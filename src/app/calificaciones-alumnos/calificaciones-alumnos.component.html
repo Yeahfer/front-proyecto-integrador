@@ -4,7 +4,7 @@
 			<h2>Calificaciones de Alumnos</h2>
 		</div>
 	</div>
-	<form class="">
+	<form (ngSubmit)="onSubmit()" #f="ngForm">
 		<div class="row align-content-center justify-content-center" >
 			<div class="col-md-8">
 				<div id="userdata">
@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<div class="col-md-8">
-				<button class="btn btn-info">Consultar</button>
+				<button type="submit" class="btn btn-info">Consultar</button>
 			</div>
 		</div>
 	</form>
