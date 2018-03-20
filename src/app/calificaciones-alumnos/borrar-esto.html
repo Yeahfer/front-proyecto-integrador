@@ -1,0 +1,61 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Calificaciones de Alumnos</h2>
+			<form name="adduser" ng-submit="consulta(adduser.$valid)">
+
+				<div class="form-group">
+					<label for="alumnoid">Alumno:</label>
+					<input class="form-control" id="alumnoid" placeholder="Matrícula del alumno"
+					       required
+					       name="name"
+					       ng-model="userfullName"
+					       class="form-control"
+					       placeholder="Full Name"
+					       ng-model="name"
+					       ng-minlength="9"
+					       ng-maxlength="9"/>
+					<br/>
+					<p ng-show="adduser.name.$error.minlength" class="help-block" style="color:red">La matrícula es muy corta.</p>
+					<p ng-show="adduser.name.$error.maxlength" class="help-block" style="color:red">La matrícula es muy larga.</p>
+					<button  type="submit" class="form-control btn btn-info" style="width:100px">Consultar</button>
+					<div ng-show="submitForm(adduser.$valid)">
+						<br>
+						<table class="table" style="width:100%">
+							<tr>
+								<th>Materia</th>
+								<th>Calificacion</th>
+							</tr>
+							<tr>
+								<td>Materia 1</td>
+								<td> 99</td>
+							</tr>
+							<tr>
+								<td>Materia 2</td>
+								<td> 98</td>
+							</tr>
+							<tr>
+								<td>Materia 3</td>
+								<td> 100</td>
+							</tr>
+							<tr>
+								<td>Materia 4</td>
+								<td> 93</td>
+							</tr>
+							<tr>
+								<td>Materia 5</td>
+								<td> 98</td>
+							</tr>
+							<tr>
+								<td>Materia 6</td>
+								<td>95</td>
+							</tr>
+						</table>
+						<div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
