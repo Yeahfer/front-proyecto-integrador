@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Registro Alumnos</title>
+		<title>Registro Carrera</title>
 		<base href="/">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,22 +11,70 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<form name="adduser" ng-submit="submitForm(adduser.$valid)">
-						<h2>Registro Alumnos</h2>
+					<form name="addcarrera" ng-submit="submitForm(addcarrera.$valid)">
+						<h2>Registro Carrera</h2>
 						<div class="form-group">
-							<label for="alumnoid">Matrícula:</label>
-							<input class="form-control" id="alumnoid" placeholder="Matrícula del alumno"
+							<label for="carreraNombre">Nombre de Carrera:</label>
+							<input class="form-control" id="carreraNombre" placeholder="Nombre de la nueva carrera"
 								required
 								name="name"
 								ng-model="userfullName"
 								class="form-control"
-								placeholder="Full Name"
+								placeholder=""
 								ng-model="name"
-								ng-minlength="6"
-								ng-maxlength="10"/>
-								<p ng-show="adduser.name.$error.minlength" class="help-block" style="color:red">La matrícula es muy corta.</p>
-								<p ng-show="adduser.name.$error.maxlength" class="help-block" style="color:red">La matrícula es muy larga.</p>
+								ng-minlength="10"
+								ng-maxlength="60"/>
+            </div>
+            <h2>Areas de conocimiento</h2>
+						<div class="form-group">
+							<label for="area1">Area 1:</label>
+							<select required class="form-control" id="area1" >
+								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
+								<option>Area A</option>
+								<option>Area B</option>
+								<option>Area C</option>
+                <option>Area D</option>
+                <option>Area E</option>
+                <option>Area F</option>
+							</select>
+            </div>
+            <div class="form-group">
+							<label for="area2">Area 2:</label>
+							<select required class="form-control" id="area2" >
+								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
+								<option>Area A</option>
+								<option>Area B</option>
+								<option>Area C</option>
+                <option>Area D</option>
+                <option>Area E</option>
+                <option>Area F</option>
+							</select>
+            </div>
+            <div class="form-group">
+							<label for="area3">Area 3:</label>
+							<select required class="form-control" id="area3" >
+								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
+								<option>Area A</option>
+								<option>Area B</option>
+								<option>Area C</option>
+                <option>Area D</option>
+                <option>Area E</option>
+                <option>Area F</option>
+							</select>
+            </div>
+            <div class="form-group">
+							<label for="area4">Area 4:</label>
+							<select required class="form-control" id="area4" >
+								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
+								<option>Area A</option>
+								<option>Area B</option>
+								<option>Area C</option>
+                <option>Area D</option>
+                <option>Area E</option>
+                <option>Area F</option>
+							</select>
 						</div>
+            <h2>Materias</h2>
 						<div class="form-group">
 							<label for="materia1">Materia 1:</label>
 							<select required class="form-control" id="materia1" >
@@ -100,6 +148,34 @@
 						<div class="form-group">
 							<label for="materia6">Materia 6:</label>
 							<select required class="form-control" id="materia6" >
+								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
+								<option>Materia A</option>
+								<option>Materia B</option>
+								<option>Materia C</option>
+								<option>Materia D</option>
+								<option>Materia E</option>
+								<option>Materia F</option>
+								<option>Materia G</option>
+								<option>Materia H</option>
+							</select>
+            </div>
+            <div class="form-group">
+							<label for="materia7">Materia 7:</label>
+							<select required class="form-control" id="materia7" >
+								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
+								<option>Materia A</option>
+								<option>Materia B</option>
+								<option>Materia C</option>
+								<option>Materia D</option>
+								<option>Materia E</option>
+								<option>Materia F</option>
+								<option>Materia G</option>
+								<option>Materia H</option>
+							</select>
+            </div>
+            <div class="form-group">
+							<label for="materia8">Materia 8:</label>
+							<select required class="form-control" id="materia7" >
 								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
 								<option>Materia A</option>
 								<option>Materia B</option>

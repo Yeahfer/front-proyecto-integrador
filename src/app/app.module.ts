@@ -10,6 +10,9 @@ import { RegistroAlumnosComponent } from './registro-alumnos/registro-alumnos.co
 import { CalificacionesAlumnosComponent } from './calificaciones-alumnos/calificaciones-alumnos.component';
 import { BuscarIntercambioComponent } from './buscar-intercambio/buscar-intercambio.component';
 import { RevalidarComponent } from './revalidar/revalidar.component';
+import { RegistroCarreraComponent } from './registro-carrera/registro-carrera.component';
+import { CreacionMateriasComponent } from './creacion-materias/creacion-materias.component';
+import { CreacionTemasComponent } from './creacion-temas/creacion-temas.component';
 
 
 const appRoutes: Routes = [
@@ -18,7 +21,10 @@ const appRoutes: Routes = [
     {path: 'registro', component: RegistroAlumnosComponent},
     {path: 'calificaciones', component: CalificacionesAlumnosComponent},
     {path: 'buscar-intercambios', component: BuscarIntercambioComponent},
-    {path: 'revalidar', component: RevalidarComponent}
+    {path: 'revalidar', component: RevalidarComponent},
+    {path: 'registarCarrera', component: RegistroCarreraComponent},
+    {path: 'registarMateria', component: CreacionMateriasComponent},
+    {path: 'registarTema', component: CreacionTemasComponent}
 ]
 
 @NgModule({
@@ -29,7 +35,10 @@ const appRoutes: Routes = [
     RegistroAlumnosComponent,
     CalificacionesAlumnosComponent,
     BuscarIntercambioComponent,
-    RevalidarComponent
+    RevalidarComponent,
+    RegistroCarreraComponent,
+    CreacionMateriasComponent,
+    CreacionTemasComponent
   ],
   imports: [
     BrowserModule,
