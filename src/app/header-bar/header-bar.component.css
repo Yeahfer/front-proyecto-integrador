@@ -1,0 +1,23 @@
+.jumbotron{
+    background: white !important;
+    margin-bottom: 0 !important;
+    text-align: center;
+    padding-top: 0 !important;
+    padding-bottom: 10px !important;
+    color: #8cc3d1;
+    width: 100% !important;
+    top: 50px;
+}
+
+h1{
+    font-size: 40px !important;
+}
+
+.navbar{
+    margin-bottom: 30px !important;
+    width: 100% !important;
+}
+
+.navbar-brand{
+    color: white !important;
+}
