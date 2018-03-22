@@ -22,25 +22,30 @@ export class RegistroCarreraComponent implements OnInit {
   myform: FormGroup;
   carrera: FormControl;
   apiRoot: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.career.CreateCareer"
-  data: [];
-  id:int; 
+  data: string;
+  nombreCarrera:string;
 
 	onSubmit() {
 
-	  this.id = Math.floor(Math.random() * 10000) + 1 ;
+	  var id = Math.floor(Math.random() * 10000) + 1 ;
 
 	  if (this.myform.valid) {
-	    console.log(this.registroArea);
+	    console.log(this.nombreCarrera);
 	    console.log("Form Submitted!");
 
 	    let url = `${this.apiRoot}`;
-	    this.http.post(url, {"$class": "mx.itesm.gradeexchanger.career.CreateCareer","careerId": this.id ,"name": this.nombreCarrera, "units": 432 }).subscribe(res => console.log(res.json()));
+	    this.http.post(url, {"$class": "mx.itesm.gradeexchanger.career.CreateCareer","careerId": id ,"name": this.nombreCarrera, "units": 432 }).subscribe(res => console.log(res.json()));
+
+      this.myform.reset();
+
 	  }
 	}
 
   ngOnInit() {
     this.createFormControls();
     this.createForm();
+
+
   }
 
   constructor(private http: Http) {
@@ -62,23 +67,22 @@ export class RegistroCarreraComponent implements OnInit {
 
   hack(){
 
-    var obj = JSON.parse(this.data);
-    for (var i = 0, len = obj.length; i < len; i++){      
-      console.log(obj[i]);
+    if(this.data != undefined){
+      return JSON.parse(this.data);
     }
-
-    return obj;
+    return [];
   }
 
   createFormControls() {
-    this.area = new FormControl('', Validators.required);
+    this.carrera = new FormControl('', Validators.required);
   }
 
   createForm() {
     this.myform = new FormGroup({
       name: new FormGroup({
-        carrera: this.area
-      })
+        carrera: this.carrera,
+      }),
+    });
   }
 
 }

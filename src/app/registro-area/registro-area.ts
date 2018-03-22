@@ -22,25 +22,28 @@ export class RegistroArea implements OnInit {
   myform: FormGroup;
   area: FormControl;
   apiRoot: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.areas.CreateArea"
-  data: [];
-  id:int; 
+  data: string;
+  registroArea:string;
 
 onSubmit() {
 
-  this.id = Math.floor(Math.random() * 10000) + 1 ;
+  var id = Math.floor(Math.random() * 10000) + 1 ;
 
   if (this.myform.valid) {
-    console.log(this.registroArea);
     console.log("Form Submitted!");
 
     let url = `${this.apiRoot}`;
-    this.http.post(url, {"$class": "mx.itesm.gradeexchanger.areas.CreateArea", "areaId": this.id, "name": this.registroArea }).subscribe(res => console.log(res.json()));
+    this.http.post(url, {"$class": "mx.itesm.gradeexchanger.areas.CreateArea", "areaId": id, "name": this.registroArea }).subscribe(res => console.log(res.json()));
+
+    this.myform.reset();
+
   }
 }
 
   ngOnInit() {
     this.createFormControls();
     this.createForm();
+
   }
 
 
@@ -64,12 +67,10 @@ onSubmit() {
 
   hack(){
 
-    var obj = JSON.parse(this.data);
-    for (var i = 0, len = obj.length; i < len; i++){      
-      console.log(obj[i]);
+    if(this.data != undefined){
+      return JSON.parse(this.data);
     }
-
-    return obj;
+    return [];
   }
 
   createFormControls() {
@@ -79,8 +80,9 @@ onSubmit() {
   createForm() {
     this.myform = new FormGroup({
       name: new FormGroup({
-        area: this.area
-      })
+        area: this.area,
+      }),
+    });
   }
 
 

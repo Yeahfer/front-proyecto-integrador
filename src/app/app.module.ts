@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { HomeComponent } from './home/home.component';
-import {FormsModule} from '@angular/forms';
 import { RegistroAlumnosComponent } from './registro-alumnos/registro-alumnos.component';
 import { CalificacionesAlumnosComponent } from './calificaciones-alumnos/calificaciones-alumnos.component';
 import { BuscarIntercambioComponent } from './buscar-intercambio/buscar-intercambio.component';
@@ -26,7 +25,7 @@ const appRoutes: Routes = [
     {path: 'revalidar', component: RevalidarComponent},
     {path: 'registarCarrera', component: RegistroCarreraComponent},
     {path: 'registarMateria', component: CreacionMateriasComponent},
-    {path: 'registarTema', component: CreacionTemasComponent}
+    {path: 'registarTema', component: CreacionTemasComponent},
     {path: 'registarArea', component: RegistroArea}
 
 ]
