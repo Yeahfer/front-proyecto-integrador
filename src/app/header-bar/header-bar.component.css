@@ -21,3 +21,32 @@ h1{
 .navbar-brand{
     color: white !important;
 }
+
+#product-list{
+    display:none;
+
+}
+#products:hover ~ #product-list{
+    display:block;
+}
+
+#product-list:hover{
+    display:block;
+    
+
+}
+
+#separator{
+    height:30px;
+}
+
+#title{
+    position: fixed;
+}
+
+#sticky{
+    text-align: justify;
+
+}
+
+

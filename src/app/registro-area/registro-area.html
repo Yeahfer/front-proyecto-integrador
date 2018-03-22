@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Registro Area</title>
+		<base href="/">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+
+		<div class="container">
+			<form novalidate
+		      [formGroup]="myform"
+		      (ngSubmit)="onSubmit()">
+				<h2>Registro Area</h2>
+					<fieldset formGroupName="name">
+						<div class="form-group">
+							<label for="carreraNombre">Nombre del Area:</label>
+							<input 
+								type="text"
+					            class="form-control"
+					            formControlName="area"
+					            required
+					            [(ngModel)]="registroArea"/>
+    			        </div>
+    			    </fieldset>
+					<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()">Registrar</button>
+  					<button class="btn btn-primary" (click)="doGET()">GET</button>
+     		</form>
+     		<br>
+     		<ul>
+		    	<li *ngFor="let d of hack()"> 
+		      	{{ d.name }}
+		    	</li>
+		   </ul>
+		</div>
+	</body>
+</html>

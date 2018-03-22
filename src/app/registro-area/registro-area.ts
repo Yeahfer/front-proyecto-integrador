@@ -13,41 +13,43 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 
 @Component({
-  selector: 'app-registro-carrera',
-  templateUrl: './registro-carrera.component.html',
-  styleUrls: ['./registro-carrera.component.css']
+  selector: 'app-registro-area',
+  templateUrl: './registro-area.html',
+  styleUrls: ['./registro-area.css']
 })
-export class RegistroCarreraComponent implements OnInit {
+export class RegistroArea implements OnInit {
 
   myform: FormGroup;
-  carrera: FormControl;
-  apiRoot: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.career.CreateCareer"
+  area: FormControl;
+  apiRoot: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.areas.CreateArea"
   data: [];
   id:int; 
 
-	onSubmit() {
+onSubmit() {
 
-	  this.id = Math.floor(Math.random() * 10000) + 1 ;
+  this.id = Math.floor(Math.random() * 10000) + 1 ;
 
-	  if (this.myform.valid) {
-	    console.log(this.registroArea);
-	    console.log("Form Submitted!");
+  if (this.myform.valid) {
+    console.log(this.registroArea);
+    console.log("Form Submitted!");
 
-	    let url = `${this.apiRoot}`;
-	    this.http.post(url, {"$class": "mx.itesm.gradeexchanger.career.CreateCareer","careerId": this.id ,"name": this.nombreCarrera, "units": 432 }).subscribe(res => console.log(res.json()));
-	  }
-	}
+    let url = `${this.apiRoot}`;
+    this.http.post(url, {"$class": "mx.itesm.gradeexchanger.areas.CreateArea", "areaId": this.id, "name": this.registroArea }).subscribe(res => console.log(res.json()));
+  }
+}
 
   ngOnInit() {
     this.createFormControls();
     this.createForm();
   }
 
+
   constructor(private http: Http) {
 
   }
 
-   doPOST() {
+
+  doPOST() {
     console.log("POST");
     console.log(this.data);
 
@@ -77,8 +79,9 @@ export class RegistroCarreraComponent implements OnInit {
   createForm() {
     this.myform = new FormGroup({
       name: new FormGroup({
-        carrera: this.area
+        area: this.area
       })
   }
+
 
 }

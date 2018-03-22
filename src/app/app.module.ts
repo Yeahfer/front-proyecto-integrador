@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
-
+import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +13,8 @@ import { RevalidarComponent } from './revalidar/revalidar.component';
 import { RegistroCarreraComponent } from './registro-carrera/registro-carrera.component';
 import { CreacionMateriasComponent } from './creacion-materias/creacion-materias.component';
 import { CreacionTemasComponent } from './creacion-temas/creacion-temas.component';
+import { RegistroArea } from './registro-area/registro-area';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const appRoutes: Routes = [
@@ -25,7 +27,11 @@ const appRoutes: Routes = [
     {path: 'registarCarrera', component: RegistroCarreraComponent},
     {path: 'registarMateria', component: CreacionMateriasComponent},
     {path: 'registarTema', component: CreacionTemasComponent}
+    {path: 'registarArea', component: RegistroArea}
+
 ]
+
+
 
 @NgModule({
   declarations: [
@@ -38,12 +44,15 @@ const appRoutes: Routes = [
     RevalidarComponent,
     RegistroCarreraComponent,
     CreacionMateriasComponent,
-    CreacionTemasComponent
+    CreacionTemasComponent,
+    RegistroArea,
   ],
   imports: [
     BrowserModule,
       FormsModule,
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+      HttpModule,
+      ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

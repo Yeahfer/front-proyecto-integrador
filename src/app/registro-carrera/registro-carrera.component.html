@@ -11,19 +11,19 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<form name="addcarrera" ng-submit="submitForm(addcarrera.$valid)">
+				<form novalidate
+			      [formGroup]="myform"
+			      (ngSubmit)="onSubmit()">
 						<h2>Registro Carrera</h2>
+						<fieldset formGroupName="name">
 						<div class="form-group">
 							<label for="carreraNombre">Nombre de Carrera:</label>
-							<input class="form-control" id="carreraNombre" placeholder="Nombre de la nueva carrera"
-								required
-								name="name"
-								ng-model="userfullName"
-								class="form-control"
-								placeholder=""
-								ng-model="name"
-								ng-minlength="10"
-								ng-maxlength="60"/>
+							<input 
+								type="text"
+					            class="form-control"
+					            formControlName="carrera"
+					            required
+					            [(ngModel)]="nombreCarrera"/>
             </div>
             <h2>Areas de conocimiento</h2>
 						<div class="form-group">
@@ -187,9 +187,17 @@
 								<option>Materia H</option>
 							</select>
 						</div>
+						 </fieldset>
 						<button  type="submit" class="form-control btn btn-info" style="width:100px">Registrar</button>
+						<button class="btn btn-primary" (click)="doGET()">GET</button>
 						<br><br>
 					</form>
+					<br>
+		     		<ul>
+				    	<li *ngFor="let d of hack()"> 
+				      	{{ d.name }}
+				    	</li>
+				   </ul>
 				</div>
 			</div>
 		</div>

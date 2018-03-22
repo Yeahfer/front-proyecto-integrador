@@ -7,14 +7,31 @@
 	<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<div class="collapse navbar-collapse" id="navbarMenu">
-		<ul class="navbar-nav">
+	<div class="collapse navbar-collapse" id="navbarMenu" >
+		<ul class="navbar-nav nav-fill w-100" id="navbarMenu">
 			<li class="nav-item">
 				<a routerLinkActive="active" routerLink="/home" class="nav-link">Home</a>
 			</li>
-			<li class="nav-item">
-				<a routerLinkActive="active" routerLink="/registro" class="nav-link">Registro de Alumnos</a>
-			</li>
+		    <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" id="products" href="">Registros<span class="caret"></span></a>
+		        <ul class="dropdown-menu" id="product-list">
+					<li >
+						<a routerLinkActive="active" routerLink="/registro" class="dropdown-item">Alumnos</a>
+					</li>
+					<li class="dropdown-divider" id="separator">
+						<a routerLinkActive="active" routerLink="registarMateria" class="dropdown-item">Materia</a>
+					</li>
+					<li class="dropdown-divider" id="separator">
+						<a routerLinkActive="active" routerLink="registarTema" class="dropdown-item">Tema</a>
+					</li>
+					<li class="dropdown-divider" id="separator">
+						<a routerLinkActive="active" routerLink="registarArea" class="dropdown-item">Área</a>
+					</li>
+		            <li class="dropdown-divider" id="separator">
+						<a routerLinkActive="active" routerLink="registarCarrera" class="dropdown-item">Carrera</a>
+					</li>
+		        </ul>
+		    </li>
 			<li class="nav-item">
 				<a routerLinkActive="active" routerLink="calificaciones" class="nav-link">Calificaciones de Alumnos</a>
 			</li>
@@ -24,15 +41,7 @@
 			<li class="nav-item">
 				<a routerLinkActive="active" routerLink="revalidar" class="nav-link">Revalidar</a>
 			</li>
-			<li class="nav-item">
-				<a routerLinkActive="active" routerLink="registarCarrera" class="nav-link">Registrar Carrera</a>
-			</li>
-			<li class="nav-item">
-				<a routerLinkActive="active" routerLink="registarMateria" class="nav-link">Registrar Materia</a>
-			</li>
-			<li class="nav-item">
-				<a routerLinkActive="active" routerLink="registarTema" class="nav-link">Registrar Tema</a>
-			</li>
+
 		</ul>
 	</div>
 </nav>
