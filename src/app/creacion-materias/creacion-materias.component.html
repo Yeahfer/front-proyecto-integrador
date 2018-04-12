@@ -4,94 +4,116 @@
 		<meta charset="utf-8">
 		<title>Registro Materia</title>
 		<base href="/">
-
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
+
 	<body>
 		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<form name="addmateria" ng-submit="submitForm(addmateria.$valid)">
-						<h2>Registro Materia</h2>
+					<form novalidate
+					[formGroup]="myform"
+		      		(ngSubmit)="onSubmit()">
+					<h2>Registro Materia</h2>
+					<fieldset formGroupName="name">
 						<div class="form-group">
-							<label for="carreraNombre">Nombre de Materia:</label>
-							<input class="form-control" id="carreraNombre" placeholder="Nombre de la nueva carrera"
-								required
-								name="name"
-								ng-model="userfullName"
-								class="form-control"
-								placeholder=""
-								ng-model="name"
-								ng-minlength="10"
-								ng-maxlength="60"/>
-            </div>
-            <h2>Area</h2>
-						<div class="form-group">
-							<label for="area">Area de conocimiento:</label>
-							<select required class="form-control" id="area" >
-								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
-								<option>Area A</option>
-								<option>Area B</option>
-								<option>Area C</option>
-                <option>Area D</option>
-                <option>Area E</option>
-                <option>Area F</option>
-							</select>
-						</div>
-            <h2>Temario</h2>
-						<div class="form-group">
-							<label for="tema1">Tema 1:</label>
-							<select required class="form-control" id="tema1" >
-								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
-								<option>Tema A</option>
-								<option>Tema B</option>
-								<option>Tema C</option>
-								<option>Tema D</option>
-								<option>Tema E</option>
-								<option>Tema F</option>
-							</select>
-            </div>
-            <div class="form-group">
-							<label for="tema2">Tema 2:</label>
-							<select required class="form-control" id="tema2" >
-								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
-								<option>Tema A</option>
-								<option>Tema B</option>
-								<option>Tema C</option>
-								<option>Tema D</option>
-								<option>Tema E</option>
-								<option>Tema F</option>
-							</select>
-            </div>
-            <div class="form-group">
-							<label for="tema3">Tema 3:</label>
-							<select required class="form-control" id="tema3" >
-								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
-								<option>Tema A</option>
-								<option>Tema B</option>
-								<option>Tema C</option>
-								<option>Tema D</option>
-								<option>Tema E</option>
-								<option>Tema F</option>
-							</select>
-            </div>
-            <div class="form-group">
-							<label for="tema4">Tema 4:</label>
-							<select required class="form-control" id="tema4" >
-								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
-								<option>Tema A</option>
-								<option>Tema B</option>
-								<option>Tema C</option>
-								<option>Tema D</option>
-								<option>Tema E</option>
-								<option>Tema F</option>
-							</select>
-						</div>
-						<button  type="submit" class="form-control btn btn-info" style="width:100px">Registrar</button>
-						<br><br>
+							<label for="materiaNombre">Nombre de la Materia:</label>
+							<input 
+								type="text"
+					            class="form-control"
+					            formControlName="materia"
+					            required
+					            [(ngModel)]="registroMateria"/>
+    			        </div>
+
+    			            	<h2>Area</h2>
+
+    			        		<div class="form-group">
+									<select  class="form-control" 
+									[(ngModel)]="registroArea" 
+									[ngModelOptions]="{standalone: true}">
+										<option value="-1">Selecciona una opción..</option>
+									    <option *ngFor="let d of hack3()" 
+									    [ngValue]="d.transactionId" 
+    									>
+									      {{d.name}}
+									    </option>
+									</select>
+		            			</div>
+    			            			     <h2>Temario</h2>
+								<div class="form-group">
+									<label for="tema1">Tema 1: </label>
+									<select  class="form-control" 
+									[(ngModel)]="registroTema1" 
+									[ngModelOptions]="{standalone: true}">
+										<option value="-1">Selecciona una opción..</option>
+									    <option *ngFor="let d of hack2()" 
+									    [ngValue]="d.transactionId" 
+    									>
+									      {{d.name}}
+									    </option>
+									</select>
+		            			</div>
+		            			<div class="form-group">
+									<label for="tema1">Tema 2: </label>
+									<select  class="form-control" 
+									[(ngModel)]="registroTema2" 
+									[ngModelOptions]="{standalone: true}">
+										<option value="-1">Selecciona una opción..</option>
+									    <option *ngFor="let d of hack2()" 
+									    [ngValue]="d.transactionId" 
+    									>
+									      {{d.name}}
+									    </option>
+									</select>
+		            			</div>
+		            			<div class="form-group">
+									<label for="tema1">Tema 3: </label>
+									<select  class="form-control" 
+									[(ngModel)]="registroTema3" 
+									[ngModelOptions]="{standalone: true}">
+										<option value="-1">Selecciona una opción..</option>
+									    <option *ngFor="let d of hack2()" 
+									    [ngValue]="d.transactionId" 
+    									>
+									      {{d.name}}
+									    </option>
+									</select>
+		            			</div>
+		            			<div class="form-group">
+									<label for="tema1">Tema 4: </label>
+									<select  class="form-control" 
+									[(ngModel)]="registroTema4" 
+									[ngModelOptions]="{standalone: true}">
+										<option value="-1">Selecciona una opción..</option>
+									    <option *ngFor="let d of hack2()" 
+									    [ngValue]="d.transactionId" 
+    									>
+									      {{d.name}}
+									    </option>
+									</select>
+		            			</div>
+		            			<div class="form-group">
+									<label for="tema1">Tema 5: </label>
+									<select  class="form-control" 
+									[(ngModel)]="registroTema5" 
+									[ngModelOptions]="{standalone: true}">
+										<option value="-1">Selecciona una opción..</option>
+									    <option *ngFor="let d of hack2()" 
+									    [ngValue]="d.transactionId" 
+    									>
+									      {{d.name}}
+									    </option>
+									</select>
+		            			</div>
+    			    </fieldset>
+						<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()">Registrar</button>
+	  					<button class="btn btn-primary" (click)="doGET()">GET</button>
 					</form>
-				</div>
-			</div>
+					<br>
+		     		<ul>
+				    	<li *ngFor="let d of hack()"> 
+				      	{{ d.name }}
+				    	</li>
+				   </ul>
 		</div>
 	</body>
 </html>

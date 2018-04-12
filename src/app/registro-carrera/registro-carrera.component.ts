@@ -21,9 +21,11 @@ export class RegistroCarreraComponent implements OnInit {
 
   myform: FormGroup;
   carrera: FormControl;
+  unidades: FormControl;
   apiRoot: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.career.CreateCareer"
   data: string;
   nombreCarrera:string;
+  unidadesCarrera:string;
 
 	onSubmit() {
 
@@ -31,10 +33,11 @@ export class RegistroCarreraComponent implements OnInit {
 
 	  if (this.myform.valid) {
 	    console.log(this.nombreCarrera);
+      console.log(this.unidadesCarrera);
 	    console.log("Form Submitted!");
 
 	    let url = `${this.apiRoot}`;
-	    this.http.post(url, {"$class": "mx.itesm.gradeexchanger.career.CreateCareer","careerId": id ,"name": this.nombreCarrera, "units": 432 }).subscribe(res => console.log(res.json()));
+	    this.http.post(url, {"$class": "mx.itesm.gradeexchanger.career.CreateCareer","careerId": id ,"name": this.nombreCarrera, "units": this.unidadesCarrera }).subscribe(res => console.log(res.json()));
 
       this.myform.reset();
 
@@ -75,12 +78,14 @@ export class RegistroCarreraComponent implements OnInit {
 
   createFormControls() {
     this.carrera = new FormControl('', Validators.required);
+    this.unidades = new FormControl('', Validators.required);
   }
 
   createForm() {
     this.myform = new FormGroup({
       name: new FormGroup({
         carrera: this.carrera,
+        unidades: this.unidades
       }),
     });
   }
