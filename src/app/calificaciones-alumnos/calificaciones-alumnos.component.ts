@@ -22,23 +22,43 @@ export class CalificacionesAlumnosComponent implements OnInit {
   myform: FormGroup;
   alumno: FormControl;
 
-
-
   data: string;
+  dataCurso: string;
+
   registroAlumno: string;
   
+  apiNombres: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.courses.Course"
+
   @ViewChild('f') formVariable: NgForm;
   constructor(private http: Http) { }
 
   ngOnInit() {
+
     this.createFormControls();
     this.createForm();
 
+    let url2 = `${this.apiNombres}`;
+    this.http.get(url2).subscribe(res => this.dataCurso=res.text());
+
+
   }
+
+   hack2(){
+
+      if(this.dataCurso != undefined){
+        
+
+        return JSON.parse(this.dataCurso);
+      }
+      return [];
+    }
+
 
  hack(){
 
     if(this.data != undefined){
+      
+
       return JSON.parse(this.data);
     }
     return [];
@@ -49,9 +69,11 @@ export class CalificacionesAlumnosComponent implements OnInit {
   onSubmit() {
 
     console.log("GET");
-    let url2 = "http://localhost:3000/api/mx.itesm.gradeexchanger.students.AssignCourse/"+this.registroAlumno;
-    this.http.get(url2).subscribe(res => this.data=res.text());
-    console.log(this.registroAlumno)
+    let url2 = "http://localhost:3000/api/mx.itesm.gradeexchanger.students.Student/"+this.registroAlumno;
+    this.http.get(url2).subscribe(res => this.data="["+res.text()+"]");
+    this.myform.reset();
+
+    
 
   }
 
