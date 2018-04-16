@@ -30,11 +30,22 @@
 		            <li class="dropdown-divider" id="separator">
 						<a routerLinkActive="active" routerLink="registarCarrera" class="dropdown-item">Carrera</a>
 					</li>
+					<li class="dropdown-divider" id="separator">
+						<a routerLinkActive="active" routerLink="registarEscuela" class="dropdown-item">Escuela</a>
+					</li>
 		        </ul>
 		    </li>
-			<li class="nav-item">
-				<a routerLinkActive="active" routerLink="calificaciones" class="nav-link">Calificaciones de Alumnos</a>
-			</li>
+		    <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" id="products" href="">Calificaciones<span class="caret"></span></a>
+		        <ul class="dropdown-menu" id="product-list">
+					<li >
+						<a routerLinkActive="active" routerLink="registarCalificacion" class="dropdown-item">Registro</a>
+					</li>
+					<li >
+						<a routerLinkActive="active" routerLink="calificaciones" class="dropdown-item">Consulta</a>
+					</li>
+		        </ul>
+		    </li>
 			<li class="nav-item">
 				<a routerLinkActive="active" routerLink="buscar-intercambios" class="nav-link">Buscar intercambios</a>
 			</li>

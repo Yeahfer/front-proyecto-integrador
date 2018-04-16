@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Asignar Calificacion</title>
+		<base href="/">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+
+		<div class="container">
+			<form novalidate
+		      [formGroup]="myform"
+		      (ngSubmit)="onSubmit()">
+				<h2>Asignar Calificacion</h2>
+					<fieldset formGroupName="name">
+
+						<div class="form-group">
+							<label for="carreraNombre">Matrícula del Alumno:</label>
+							<input 
+								type="text"
+					            class="form-control"
+					            formControlName="alumno"
+					            required
+					            [(ngModel)]="registroAlumno"/>
+    			        </div>
+						<div class="form-group">
+							<label for="carreraNombre">Periodo:</label>
+							<input 
+								type="text"
+					            class="form-control"
+					            formControlName="periodo"
+					            required
+					            [(ngModel)]="registroPeriodo"/>
+    			        </div>
+						<div class="form-group">
+							<label for="carreraNombre">Calificacion:</label>
+							<input 
+								type="text"
+					            class="form-control"
+					            formControlName="calificacion"
+					            required
+					            [(ngModel)]="registroCalificacion"/>
+    			        </div>
+
+    			       	<h2>Curso</h2>
+
+    			        		<div class="form-group">
+									<select  class="form-control" 
+									[(ngModel)]="registroCurso" 
+									[ngModelOptions]="{standalone: true}">
+										<option value="-1">Selecciona una opción..</option>
+									    <option *ngFor="let d of hack2()" 
+									    [ngValue]="d.courseId" 
+    									>
+									      {{d.name}}
+									    </option>
+									</select>
+		            			</div>
+    			    </fieldset>
+					<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()">Registrar</button>
+  					<button class="btn btn-primary" (click)="doGET()">GET</button>
+     		</form>
+     		<br>
+     		<ul>
+		    	<li *ngFor="let d of hack()"> 
+		      	{{ d.name }}
+		    	</li>
+		   </ul>
+		</div>
+	</body>
+</html>

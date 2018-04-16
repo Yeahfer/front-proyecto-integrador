@@ -13,6 +13,8 @@ import { RegistroCarreraComponent } from './registro-carrera/registro-carrera.co
 import { CreacionMateriasComponent } from './creacion-materias/creacion-materias.component';
 import { CreacionTemasComponent } from './creacion-temas/creacion-temas.component';
 import { RegistroArea } from './registro-area/registro-area';
+import { RegistroEscuela } from './registro-escuela/registro-escuela';
+import { RegistroCalificacion } from './registro-calificacion/registro-calificacion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -26,7 +28,10 @@ const appRoutes: Routes = [
     {path: 'registarCarrera', component: RegistroCarreraComponent},
     {path: 'registarMateria', component: CreacionMateriasComponent},
     {path: 'registarTema', component: CreacionTemasComponent},
-    {path: 'registarArea', component: RegistroArea}
+    {path: 'registarEscuela', component: RegistroEscuela},
+    {path: 'registarArea', component: RegistroArea},
+    {path: 'registarCalificacion', component: RegistroCalificacion}
+
 
 ]
 
@@ -45,6 +50,8 @@ const appRoutes: Routes = [
     CreacionMateriasComponent,
     CreacionTemasComponent,
     RegistroArea,
+    RegistroEscuela,
+    RegistroCalificacion,
   ],
   imports: [
     BrowserModule,

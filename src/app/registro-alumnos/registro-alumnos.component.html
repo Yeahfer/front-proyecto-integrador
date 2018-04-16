@@ -1,119 +1,87 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Registro Alumnos</title>
+		<title>Registro Alumno</title>
 		<base href="/">
-
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
+
 	<body>
 		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<form name="adduser" ng-submit="submitForm(adduser.$valid)">
-						<h2>Registro Alumnos</h2>
+					<form novalidate
+					[formGroup]="myform"
+		      		(ngSubmit)="onSubmit()">
+					<h2>Registro Alumno</h2>
+					<fieldset formGroupName="name">
 						<div class="form-group">
-							<label for="alumnoid">Matrícula:</label>
-							<input class="form-control" id="alumnoid" placeholder="Matrícula del alumno"
-								required
-								name="name"
-								ng-model="userfullName"
-								class="form-control"
-								placeholder="Full Name"
-								ng-model="name"
-								ng-minlength="6"
-								ng-maxlength="10"/>
-						</div>
+							<label for="matricula">Matricula del alumno:</label>
+							<input 
+								type="text"
+					            class="form-control"
+					            formControlName="matricula"
+					            required
+					            [(ngModel)]="registroAlumno"/>
+    			        </div>
 						<div class="form-group">
-							<label for="materia1">Materia 1:</label>
-							<select required class="form-control" id="materia1" >
-								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
-								<option>Materia A</option>
-								<option>Materia B</option>
-								<option>Materia C</option>
-								<option>Materia D</option>
-								<option>Materia E</option>
-								<option>Materia F</option>
-								<option>Materia G</option>
-								<option>Materia H</option>
-							</select>
-						</div>
+							<label for="nombre">Nombre del alumno:</label>
+							<input 
+								type="text"
+					            class="form-control"
+					            formControlName="nombre"
+					            required
+					            [(ngModel)]="registroNombre"/>
+    			        </div>
 						<div class="form-group">
-							<label for="materia2">Materia 2:</label>
-							<select required class="form-control" id="materia2" >
-								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
-								<option>Materia A</option>
-								<option>Materia B</option>
-								<option>Materia C</option>
-								<option>Materia D</option>
-								<option>Materia E</option>
-								<option>Materia F</option>
-								<option>Materia G</option>
-								<option>Materia H</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="materia3">Materia 3:</label>
-							<select required class="form-control" id="materia3" >
-								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
-								<option>Materia A</option>
-								<option>Materia B</option>
-								<option>Materia C</option>
-								<option>Materia D</option>
-								<option>Materia E</option>
-								<option>Materia F</option>
-								<option>Materia G</option>
-								<option>Materia H</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="materia4">Materia 4:</label>
-							<select required class="form-control" id="materia4" >
-								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
-								<option>Materia A</option>
-								<option>Materia B</option>
-								<option>Materia C</option>
-								<option>Materia D</option>
-								<option>Materia E</option>
-								<option>Materia F</option>
-								<option>Materia G</option>
-								<option>Materia H</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="materia5">Materia 5:</label>
-							<select required class="form-control" id="materia5" >
-								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
-								<option>Materia A</option>
-								<option>Materia B</option>
-								<option>Materia C</option>
-								<option>Materia D</option>
-								<option>Materia E</option>
-								<option>Materia F</option>
-								<option>Materia G</option>
-								<option>Materia H</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="materia6">Materia 6:</label>
-							<select required class="form-control" id="materia6" >
-								<option style="color:gray" value="" disabled selected hidden>Selecciona una opción...</option>
-								<option>Materia A</option>
-								<option>Materia B</option>
-								<option>Materia C</option>
-								<option>Materia D</option>
-								<option>Materia E</option>
-								<option>Materia F</option>
-								<option>Materia G</option>
-								<option>Materia H</option>
-							</select>
-						</div>
-						<button  type="submit" class="form-control btn btn-info" style="width:100px">Registrar</button>
-						<br><br>
+							<label for="apellido">Apellido del alumno:</label>
+							<input 
+								type="text"
+					            class="form-control"
+					            formControlName="apellido"
+					            required
+					            [(ngModel)]="registroApellido"/>
+    			        </div>
+    			            	<h2>Carrera</h2>
+
+    			        		<div class="form-group">
+									<select  class="form-control" 
+									[(ngModel)]="registroCarrera" 
+									[ngModelOptions]="{standalone: true}">
+										<option value="-1">Selecciona una opción..</option>
+									    <option *ngFor="let d of hack2()" 
+									    [ngValue]="d.transactionId" 
+    									>
+									      {{d.name}}
+									    </option>
+									</select>
+		            			</div>
+
+
+  			            	<h2>Escuela</h2>
+
+    			        		<div class="form-group">
+									<select  class="form-control" 
+									[(ngModel)]="registroEscuela" 
+									[ngModelOptions]="{standalone: true}">
+										<option value="-1">Selecciona una opción..</option>
+									    <option *ngFor="let d of hack3()" 
+									    [ngValue]="d.schoolId" 
+    									>
+									      {{d.name}}
+									    </option>
+									</select>
+		            			</div>
+
+    			    </fieldset>
+						<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()">Registrar</button>
+	  					<button class="btn btn-primary" (click)="doGET()">GET</button>
 					</form>
-				</div>
-			</div>
+					<br>
+		     		<ul>
+				    	<li *ngFor="let d of hack()"> 
+				      	{{ d.firstName }}
+				    	</li>
+				   </ul>
 		</div>
 	</body>
 </html>

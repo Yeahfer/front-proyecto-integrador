@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Consulta Calificacion</title>
+		<title>Registro Escuela</title>
 		<base href="/">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
@@ -13,17 +13,34 @@
 			<form novalidate
 		      [formGroup]="myform"
 		      (ngSubmit)="onSubmit()">
-				<h2>Consulta Calificacion</h2>
+				<h2>Registro Escuela</h2>
 					<fieldset formGroupName="name">
-
 						<div class="form-group">
-							<label for="carreraNombre">Matrícula del Alumno:</label>
+							<label for="carreraNombre">Nombre de la Escuela:</label>
 							<input 
 								type="text"
 					            class="form-control"
-					            formControlName="alumno"
+					            formControlName="escuela"
 					            required
-					            [(ngModel)]="registroAlumno"/>
+					            [(ngModel)]="registroEscuela"/>
+    			        </div>
+						<div class="form-group">
+							<label for="carreraNombre">Mínimo para aprobar:</label>
+							<input 
+								type="text"
+					            class="form-control"
+					            formControlName="min"
+					            required
+					            [(ngModel)]="registroMin"/>
+    			        </div>
+						<div class="form-group">
+							<label for="carreraNombre">Máxima calificación:</label>
+							<input 
+								type="text"
+					            class="form-control"
+					            formControlName="max"
+					            required
+					            [(ngModel)]="registroMax"/>
     			        </div>
     			    </fieldset>
 					<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()">Registrar</button>
