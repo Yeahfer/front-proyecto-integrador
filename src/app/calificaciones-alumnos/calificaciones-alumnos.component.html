@@ -27,7 +27,6 @@
     			        </div>
     			    </fieldset>
 					<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()">Consultar</button>
-  					<button class="btn btn-primary" (click)="doGET()">GET</button>
      		</form>
 			<br>
 			<table *ngFor="let d of hack()">
@@ -37,14 +36,6 @@
 				   <th>Cursos Aprobados</th>
 				   <th>Cursos Reprobados</th>
 				</tr>
-				<!--
-				<tr>
-					<td>Matricula</td>
-					<td>Nombre</td>
-					<td>Cursos Aprobados</td>
-					<td>Cursos Reprobados</td>
-				 </tr>
-				-->
 				<tr>
 				   <td>{{d.studentId}}</td>
 				   <td>{{d.firstName}} {{d.lastName}}</td>
@@ -62,8 +53,10 @@
 				   <td>
 					   <ul *ngFor="let h of d.coursesFailed">
 							 <ul *ngFor="let j of hack2()">
-							   <div *ngIf="h.courseId.includes(j.courseId)">
-								   <li>{{j.name}} {{h.period}} {{h.grade}}</li>
+							   <div clas="materias" *ngIf="h.courseId.includes(j.courseId)">
+									<li>Materia: {{j.name}}</li>
+									<li>Periodo: {{h.period}}</li>
+									<li>Calificacion: {{h.grade}}</li>
 							   </div>
 						   </ul>
 					   </ul>
