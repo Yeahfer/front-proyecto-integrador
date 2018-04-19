@@ -29,6 +29,7 @@ export class RegistroCalificacion implements OnInit {
   apiCurso: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.courses.createCourseS"
   
   data: string;
+  dataAlumno : string;
   dataCurso: string;
 
   registroCurso:string;
@@ -51,12 +52,18 @@ onSubmit() {
   }
 }
 
+
+
+
+myMethod(){
+  
+  this.http.get("http://localhost:3000/api/mx.itesm.gradeexchanger.students.Student/"+this.alumno.value).subscribe(res => this.dataAlumno=res.text());  
+
+}
   ngOnInit() {
     this.createFormControls();
     this.createForm();
 
-    let url2 = `${this.apiCurso}`;
-    this.http.get(url2).subscribe(res => this.dataCurso=res.text());
 
     console.log(this.dataCurso);
 
@@ -77,9 +84,12 @@ onSubmit() {
   }
   
   doGET() {
-	  console.log("GET");
-	  let url = `${this.apiRoot}`;
-	  this.http.get(url).subscribe(res => this.data=res.text());
+
+      if(this.dataAlumno!=null){
+
+        this.http.get("http://localhost:3000/api/queries/CursosConEscuela?school_id=resource%3Amx.itesm.gradeexchanger.schools.School%23"+(JSON.parse(this.dataAlumno).school).split('#')[1]).subscribe(res => this.dataCurso=res.text());
+      }
+
   }
 
   hack2(){

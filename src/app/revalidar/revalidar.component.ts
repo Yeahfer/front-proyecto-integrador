@@ -27,12 +27,12 @@ export class RevalidarComponent implements OnInit {
 
   apiRoot: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.students.AssignCourse"
   apiEscuela: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.schools.School"
-  apiCurso: string  = "http://localhost:3000/api/mx.itesm.gradeexchanger.courses.createCourseS"
-  apiCursoExtranjero: string  = "http://localhost:3000/api/mx.itesm.gradeexchanger.courses.createCourseS"
+
 
   data: string;
   dataEscuela: string;
   dataCursoExtranjero: string;
+  dataAlumno: string;
   dataCurso: string;
 
   registroCurso:string;
@@ -57,18 +57,36 @@ onSubmit() {
   }
 }
 
+
+
+  onChange2(){
+
+
+    console.log((JSON.parse(this.dataAlumno).school).split('#')[1]);   
+
+    this.http.get("http://localhost:3000/api/queries/CursosConEscuela?school_id=resource%3Amx.itesm.gradeexchanger.schools.School%23"+(JSON.parse(this.dataAlumno).school).split('#')[1]).subscribe(res => this.dataCurso=res.text());
+
+  }
+
+  onChange() {
+
+      this.http.get("http://localhost:3000/api/queries/CursosConEscuela?school_id=resource%3Amx.itesm.gradeexchanger.schools.School%23"+this.registroExtranjera).subscribe(res => this.dataCursoExtranjero=res.text());
+
+
+      this.http.get("http://localhost:3000/api/mx.itesm.gradeexchanger.students.Student/"+this.alumno.value).subscribe(res => this.dataAlumno=res.text());
+
+
+  }
+
   ngOnInit() {
+
     this.createFormControls();
     this.createForm();
 
-    let url2 = `${this.apiCursoExtranjero}`;
-    this.http.get(url2).subscribe(res => this.dataCursoExtranjero=res.text());
+
 
     let url3 = `${this.apiEscuela}`;
     this.http.get(url3).subscribe(res => this.dataEscuela=res.text());
-
-    let url4 = `${this.apiCurso}`;
-    this.http.get(url4).subscribe(res => this.dataCurso=res.text());
 
     console.log(this.dataCurso);
 
@@ -143,7 +161,8 @@ onSubmit() {
         alumno : this.alumno,
         periodo: this.periodo,
         calificacion: this.calificacion,
-      }),
+      })
     });
   }
+}
 

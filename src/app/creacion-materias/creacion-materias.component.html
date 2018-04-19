@@ -24,6 +24,21 @@
 					            [(ngModel)]="registroMateria"/>
     			        </div>
 
+    			            	<h2>Escuela</h2>
+
+    			        		<div class="form-group">
+									<select  class="form-control" 
+									[(ngModel)]="registroEscuela" 
+									[ngModelOptions]="{standalone: true}">
+										<option value="-1">Selecciona una opción..</option>
+									    <option *ngFor="let d of hack4()" 
+									    [ngValue]="d.schoolId" 
+    									>
+									      {{d.name}}
+									    </option>
+									</select>
+		            			</div>
+
     			            	<h2>Area</h2>
 
     			        		<div class="form-group">

@@ -16,7 +16,7 @@ import { RegistroArea } from './registro-area/registro-area';
 import { RegistroEscuela } from './registro-escuela/registro-escuela';
 import { RegistroCalificacion } from './registro-calificacion/registro-calificacion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { CambioEscuelaComponent } from './cambio-escuela/cambio-escuela.component';
 
 const appRoutes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -29,6 +29,7 @@ const appRoutes: Routes = [
     {path: 'registarMateria', component: CreacionMateriasComponent},
     {path: 'registarTema', component: CreacionTemasComponent},
     {path: 'registarEscuela', component: RegistroEscuela},
+    {path: 'cambiarEscuela', component: CambioEscuelaComponent},
     {path: 'registarArea', component: RegistroArea},
     {path: 'registarCalificacion', component: RegistroCalificacion}
 
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     RegistroArea,
     RegistroEscuela,
     RegistroCalificacion,
+    CambioEscuelaComponent,
   ],
   imports: [
     BrowserModule,

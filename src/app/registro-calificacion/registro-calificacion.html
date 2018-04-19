@@ -23,8 +23,11 @@
 					            class="form-control"
 					            formControlName="alumno"
 					            required
-					            [(ngModel)]="registroAlumno"/>
+					            [(ngModel)]="registroAlumno"
+					            (blur)="myMethod()"
+					            />
     			        </div>
+
 						<div class="form-group">
 							<label for="carreraNombre">Periodo:</label>
 							<input 
@@ -32,8 +35,29 @@
 					            class="form-control"
 					            formControlName="periodo"
 					            required
-					            [(ngModel)]="registroPeriodo"/>
+					            [(ngModel)]="registroPeriodo"
+					            (ngModelChange)="doGET()"/>
     			        </div>
+
+
+    			        <h2>Curso</h2>
+
+    			        		<div class="form-group">
+									<select  class="form-control" 
+									[(ngModel)]="registroCurso" 
+									[ngModelOptions]="{standalone: true}"
+									>
+										<option value="-1">Selecciona una opción..</option>
+									    <option *ngFor="let d of hack2()" 
+									    [ngValue]="d.courseId" 
+    									>
+									      {{d.name}}
+									    </option>
+									</select>
+		            			</div>
+
+
+
 						<div class="form-group">
 							<label for="carreraNombre">Calificacion:</label>
 							<input 
@@ -44,23 +68,9 @@
 					            [(ngModel)]="registroCalificacion"/>
     			        </div>
 
-    			       	<h2>Curso</h2>
 
-    			        		<div class="form-group">
-									<select  class="form-control" 
-									[(ngModel)]="registroCurso" 
-									[ngModelOptions]="{standalone: true}">
-										<option value="-1">Selecciona una opción..</option>
-									    <option *ngFor="let d of hack2()" 
-									    [ngValue]="d.courseId" 
-    									>
-									      {{d.name}}
-									    </option>
-									</select>
-		            			</div>
     			    </fieldset>
 					<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()">Registrar</button>
-  					<button class="btn btn-primary" (click)="doGET()">GET</button>
      		</form>
      		<br>
      		<ul>

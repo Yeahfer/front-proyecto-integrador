@@ -24,10 +24,12 @@ export class CreacionMateriasComponent implements OnInit {
   apiRoot: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.courses.createCourseS"
   apiTemas: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.tema.CreateTema"
   apiArea: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.areas.CreateArea"
+  apiEscuela : string =  "http://localhost:3000/api/mx.itesm.gradeexchanger.schools.School"
 
   data: string;
   dataTema: string;
   dataArea: string;
+  dataEscuela : string;
 
   registroMateria: string;
   registroTema1: string;
@@ -36,6 +38,7 @@ export class CreacionMateriasComponent implements OnInit {
   registroTema4: string;
   registroTema5: string;
   registroArea: string;
+  registroEscuela : string;
 
 onSubmit() {
 
@@ -44,7 +47,7 @@ onSubmit() {
   if (this.myform.valid) {
     console.log("Form Submitted!");
     let url = `${this.apiRoot}`;
-    this.http.post(url, {"$class": "mx.itesm.gradeexchanger.courses.createCourseS", "courseId": id, "name": this.registroMateria, "units" : 23, "period" : "this.periodo", "temaId": [this.registroTema1, this.registroTema2, this.registroTema3, this.registroTema4, this.registroTema5], "areaId" : this.registroArea }).subscribe(res => console.log(res.json()));
+    this.http.post(url, {"$class": "mx.itesm.gradeexchanger.courses.createCourseS", "courseId": id, "name": this.registroMateria, "units" : 23, "period" : "this.periodo", "temaId": [this.registroTema1, this.registroTema2, this.registroTema3, this.registroTema4, this.registroTema5], "areaId" : this.registroArea, "schoolId": this.registroEscuela }).subscribe(res => console.log(res.json()));
 
     this.myform.reset();
 
@@ -61,6 +64,10 @@ onSubmit() {
   	let url3 = `${this.apiArea}`;
 	this.http.get(url3).subscribe(res => this.dataArea=res.text());
 
+
+    let url4 = `${this.apiEscuela}`;
+  this.http.get(url4).subscribe(res => this.dataEscuela=res.text());
+
 	console.log(this.dataArea);
 
 	this.registroTema1 = "-1";
@@ -70,6 +77,7 @@ onSubmit() {
 	this.registroTema5 = "-1";
 
 	this.registroArea = "-1";
+  this.registroEscuela = "-1";
   }
 
 
@@ -93,6 +101,14 @@ onSubmit() {
 	  console.log(this.data);
 
 
+  }
+
+  hack4(){
+
+    if(this.dataEscuela != undefined){
+      return JSON.parse(this.dataEscuela);
+    }
+    return [];
   }
 
   hack3(){
