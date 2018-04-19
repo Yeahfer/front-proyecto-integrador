@@ -5,6 +5,7 @@ table, th , td  {
 
 table{
     margin-bottom: 45px !important;
+    border: 1px solid #a3a3a3;
 }
 
 th{
@@ -23,4 +24,10 @@ table tr:nth-child(odd) {
 
 table tr:nth-child(even) {
     background-color: #ffffff;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
