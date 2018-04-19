@@ -37,13 +37,21 @@
 				   <th>Cursos Aprobados</th>
 				   <th>Cursos Reprobados</th>
 				</tr>
+				<!--
+				<tr>
+					<td>Matricula</td>
+					<td>Nombre</td>
+					<td>Cursos Aprobados</td>
+					<td>Cursos Reprobados</td>
+				 </tr>
+				-->
 				<tr>
 				   <td>{{d.studentId}}</td>
 				   <td>{{d.firstName}} {{d.lastName}}</td>
 				   <td>
 					   <ul *ngFor="let h of d.coursesApproved">
 							 <ul *ngFor="let j of hack2()">
-							   <div *ngIf="h.courseId.includes(j.courseId)">
+							   <div class="materias" *ngIf="h.courseId.includes(j.courseId)">
 								   <li>Materia: {{j.name}}</li>
 								   <li>Periodo: {{h.period}}</li>
 								   <li>Calificacion: {{h.grade}}</li>
