@@ -14,18 +14,21 @@
 		      [formGroup]="myform"
 		      (ngSubmit)="onSubmit()">
 				<h2>Consulta Calificacion</h2>
-					<fieldset formGroupName="name">
+					<fieldset>
 
 						<div class="form-group">
 							<label for="carreraNombre">Matrícula del Alumno:</label>
 							<input 
 								type="text"
 					            class="form-control"
-					            formControlName="alumno"
+					            formControlName="matricula"
 					            required
 					            [(ngModel)]="registroAlumno"/>
-    			        </div>
-    			    </fieldset>
+						</div>
+						<p class="error" *ngIf="myform.get('matricula').hasError('minlength')">Min of 9 characters</p>
+						<p class="error" *ngIf="myform.get('matricula').hasError('maxlength')">Max of 10 characters</p>
+						<p class="error" *ngIf="myform.get('matricula').hasError('pattern')">Not an ID</p>				   
+					</fieldset>
 					<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()">Consultar</button>
      		</form>
 			<br>
