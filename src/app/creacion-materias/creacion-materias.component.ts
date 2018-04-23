@@ -55,8 +55,6 @@ onSubmit() {
 }
 
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
 
   	let url2 = `${this.apiTemas}`;
 	this.http.get(url2).subscribe(res => this.dataTema=res.text());
@@ -81,8 +79,17 @@ onSubmit() {
   }
 
 
-  constructor(private http: Http) {
-
+  constructor(private http: Http, public fb: FormBuilder) { 
+    this.myform = this.fb.group({
+      materia: ['',[Validators.required, Validators.minLength(4)]],
+      escuela: ['',[Validators.required]],
+      area: ['',[Validators.required]],
+      tema1: ['',[Validators.required]],
+      tema2: ['',[Validators.required]],
+      tema3: ['',[]],
+      tema4: ['',[]],
+      tema5: ['',[]],
+    });
   }
 
 
@@ -135,19 +142,5 @@ onSubmit() {
     }
     return [];
   }
-
-
-  createFormControls() {
-    this.materia = new FormControl('', Validators.required);
-  }
-
-  createForm() {
-    this.myform = new FormGroup({
-      name: new FormGroup({
-        materia: this.materia
-    	}),
-    });
-  }
-
 
 }

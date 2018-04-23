@@ -13,34 +13,38 @@
 					[formGroup]="myform"
 		      		(ngSubmit)="onSubmit()">
 					<h2>Registro Alumno</h2>
-					<fieldset formGroupName="name">
+					<fieldset>
 						<div class="form-group">
-							<label for="matricula">Matricula del alumno:</label>
+							<label for="matricula">Matricula del alumno<label class="error" *ngIf="myform.get('matricula').hasError('required')">*</label></label>
 							<input 
 								type="text"
 					            class="form-control"
 					            formControlName="matricula"
 					            required
 					            [(ngModel)]="registroAlumno"/>
-    			        </div>
+						</div>
+						<p class="error" *ngIf="myform.get('matricula').hasError('minlength')">Matricula muy corta</p>
+						<p class="error" *ngIf="myform.get('matricula').hasError('pattern')">Formato no válido</p>	
 						<div class="form-group">
-							<label for="nombre">Nombre del alumno:</label>
+							<label for="nombre">Nombre del alumno<label class="error" *ngIf="myform.get('nombre').hasError('required')">*</label></label>
 							<input 
 								type="text"
 					            class="form-control"
 					            formControlName="nombre"
 					            required
 					            [(ngModel)]="registroNombre"/>
-    			        </div>
+						</div>
+						<p class="error" *ngIf="myform.get('nombre').hasError('minlength')">Nombre muy corto</p>
 						<div class="form-group">
-							<label for="apellido">Apellido del alumno:</label>
+							<label for="apellido">Apellido del alumno<label class="error" *ngIf="myform.get('apellido').hasError('required')">*</label></label>
 							<input 
 								type="text"
 					            class="form-control"
 					            formControlName="apellido"
 					            required
 					            [(ngModel)]="registroApellido"/>
-    			        </div>
+						</div>
+						<p class="error" *ngIf="myform.get('apellido').hasError('minlength')">Apellido muy corto</p>
 
 
   			            	<h2>Escuela</h2>
@@ -51,22 +55,25 @@
 									[ngModelOptions]="{standalone: true}">
 										<option value="-1">Selecciona una opción..</option>
 									    <option *ngFor="let d of hack3()" 
-									    [ngValue]="d.schoolId" 
+										[ngValue]="d.schoolId"
+										formControlName="escuela"
     									>
 									      {{d.name}}
 									    </option>
 									</select>
-		            			</div>
 
+		            			</div>
     			            	<h2>Carrera</h2>
 
     			        		<div class="form-group">
-									<select  class="form-control" 
+									<select  class="form-control"
+									
 									[(ngModel)]="registroCarrera" 
 									[ngModelOptions]="{standalone: true}">
 										<option value="-1">Selecciona una opción..</option>
 									    <option *ngFor="let d of hack2()" 
-									    [ngValue]="d.transactionId" 
+										[ngValue]="d.transactionId" 
+										formControlName="carrera"
     									>
 									      {{d.name}}
 									    </option>
@@ -76,7 +83,7 @@
 
 
     			    </fieldset>
-						<button  type="submit" class="form-control btn btn-info" style="width:150px" (click)="hack()">Registrar alumno</button>
+						<button  type="submit" class="form-control btn btn-info" style="width:150px" (click)="hack()" [disabled]="myform.invalid">Registrar alumno</button>
 					</form>
 					<br>
 		     		<ul>

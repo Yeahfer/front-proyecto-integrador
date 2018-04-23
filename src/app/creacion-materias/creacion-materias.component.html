@@ -13,16 +13,17 @@
 					[formGroup]="myform"
 		      		(ngSubmit)="onSubmit()">
 					<h2>Registro Materia</h2>
-					<fieldset formGroupName="name">
+					<fieldset>
 						<div class="form-group">
-							<label for="materiaNombre">Nombre de la Materia:</label>
+							<label for="materiaNombre">Nombre de la Materia:<label class="error" *ngIf="myform.get('materia').hasError('required')">*</label></label>
 							<input 
 								type="text"
 					            class="form-control"
 					            formControlName="materia"
 					            required
 					            [(ngModel)]="registroMateria"/>
-    			        </div>
+						</div>
+						<p class="error" *ngIf="myform.get('materia').hasError('minlength')">El nombre de la materia es muy corto</p>
 
     			            	<h2>Escuela</h2>
 
@@ -32,7 +33,8 @@
 									[ngModelOptions]="{standalone: true}">
 										<option value="-1">Selecciona una opción..</option>
 									    <option *ngFor="let d of hack4()" 
-									    [ngValue]="d.schoolId" 
+										[ngValue]="d.schoolId"
+										formControlName="escuela" 
     									>
 									      {{d.name}}
 									    </option>
@@ -47,7 +49,8 @@
 									[ngModelOptions]="{standalone: true}">
 										<option value="-1">Selecciona una opción..</option>
 									    <option *ngFor="let d of hack3()" 
-									    [ngValue]="d.transactionId" 
+										[ngValue]="d.transactionId"
+										formControlName="area" 
     									>
 									      {{d.name}}
 									    </option>
@@ -61,7 +64,8 @@
 									[ngModelOptions]="{standalone: true}">
 										<option value="-1">Selecciona una opción..</option>
 									    <option *ngFor="let d of hack2()" 
-									    [ngValue]="d.transactionId" 
+										[ngValue]="d.transactionId"
+										formControlName="tema1" 
     									>
 									      {{d.name}}
 									    </option>
@@ -74,7 +78,8 @@
 									[ngModelOptions]="{standalone: true}">
 										<option value="-1">Selecciona una opción..</option>
 									    <option *ngFor="let d of hack2()" 
-									    [ngValue]="d.transactionId" 
+										[ngValue]="d.transactionId" 
+										formControlName="tema2"
     									>
 									      {{d.name}}
 									    </option>
@@ -120,7 +125,7 @@
 									</select>
 		            			</div>
     			    </fieldset>
-						<button  type="submit" class="form-control btn btn-info" style="width:150px" (click)="hack()">Registrar materia</button>
+						<button type="submit" class="form-control btn btn-info" style="width:150px" (click)="hack()" [disabled]="myform.invalid">Registrar materia</button>
 					</form>
 					<br>
 		     		<ul>

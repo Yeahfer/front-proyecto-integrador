@@ -53,8 +53,6 @@ onSubmit() {
 }
 
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
 
   	let url2 = `${this.apiCarrera}`;
 	  this.http.get(url2).subscribe(res => this.dataCarrera=res.text());
@@ -70,8 +68,15 @@ onSubmit() {
   }
 
 
-  constructor(private http: Http) {
-
+  constructor(private http: Http, public fb: FormBuilder) { 
+    this.myform = this.fb.group({
+      matricula: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9),
+                       Validators.pattern(/^([aA]0)([0-9]+){7}$/)]],
+      nombre: ['',[Validators.required, Validators.minLength(2)]],
+      apellido: ['',[Validators.required, Validators.minLength(2)]],
+      escuela: ['',[Validators.required]],
+      carrera: ['',[Validators.required]],
+    });
   }
 
 
@@ -116,24 +121,6 @@ onSubmit() {
       return JSON.parse(this.data);
     }
     return [];
-  }
-
-
-  createFormControls() {
-    this.matricula = new FormControl('', Validators.required);
-    this.nombre = new FormControl('', Validators.required);
-    this.apellido = new FormControl('', Validators.required);
-
-  }
-
-  createForm() {
-    this.myform = new FormGroup({
-      name: new FormGroup({
-        matricula: this.matricula,
-        nombre: this.nombre,
-        apellido: this.apellido
-    	}),
-    });
   }
 
 }
