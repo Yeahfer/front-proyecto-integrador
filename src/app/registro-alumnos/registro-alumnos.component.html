@@ -56,7 +56,6 @@
 										<option value="-1">Selecciona una opción..</option>
 									    <option *ngFor="let d of hack3()" 
 										[ngValue]="d.schoolId"
-										formControlName="escuela"
     									>
 									      {{d.name}}
 									    </option>
@@ -67,13 +66,11 @@
 
     			        		<div class="form-group">
 									<select  class="form-control"
-									
 									[(ngModel)]="registroCarrera" 
 									[ngModelOptions]="{standalone: true}">
 										<option value="-1">Selecciona una opción..</option>
 									    <option *ngFor="let d of hack2()" 
-										[ngValue]="d.transactionId" 
-										formControlName="carrera"
+										[ngValue]="d.transactionId"
     									>
 									      {{d.name}}
 									    </option>

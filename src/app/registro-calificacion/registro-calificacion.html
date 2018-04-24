@@ -14,15 +14,14 @@
 		      [formGroup]="myform"
 		      (ngSubmit)="onSubmit()">
 				<h2>Asignar Calificacion</h2>
-					<fieldset formGroupName="name">
+					<fieldset>
 
 						<div class="form-group">
 							<label for="carreraNombre">Matrícula del Alumno:</label>
 							<input 
 								type="text"
 					            class="form-control"
-					            formControlName="alumno"
-					            required
+					            formControlName="matricula"
 					            [(ngModel)]="registroAlumno"
 					            (blur)="myMethod()"
 					            />
@@ -34,7 +33,6 @@
 								type="text"
 					            class="form-control"
 					            formControlName="periodo"
-					            required
 					            [(ngModel)]="registroPeriodo"
 					            (ngModelChange)="doGET()"/>
     			        </div>
@@ -64,13 +62,12 @@
 								type="text"
 					            class="form-control"
 					            formControlName="calificacion"
-					            required
 					            [(ngModel)]="registroCalificacion"/>
     			        </div>
 
 
     			    </fieldset>
-					<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()">Registrar</button>
+					<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()" [disabled]="myform.invalid">Registrar</button>
      		</form>
      		<br>
      		<ul>

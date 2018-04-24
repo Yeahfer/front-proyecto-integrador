@@ -47,14 +47,16 @@ onSubmit() {
 }
 
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
 
   }
 
 
-  constructor(private http: Http) {
-
+  constructor(private http: Http, public fb: FormBuilder) { 
+    this.myform = this.fb.group({
+      escuela: ['',[Validators.required, Validators.minLength(4)]],
+      min: ['',[Validators.required]],
+      max: ['',[Validators.required]],
+    });
   }
 
 
@@ -78,23 +80,5 @@ onSubmit() {
     }
     return [];
   }
-
-  createFormControls() {
-    this.escuela = new FormControl('', Validators.required);
-    this.min = new FormControl('', Validators.required);
-    this.max = new FormControl('', Validators.required);
-
-  }
-
-  createForm() {
-    this.myform = new FormGroup({
-      name: new FormGroup({
-        escuela: this.escuela,
-        min: this.min,
-        max: this.max,
-      }),
-    });
-  }
-
 
 }

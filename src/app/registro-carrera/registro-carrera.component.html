@@ -15,7 +15,7 @@
 			      [formGroup]="myform"
 			      (ngSubmit)="onSubmit()">
 						<h2>Registro Carrera</h2>
-						<fieldset formGroupName="name">
+						<fieldset>
 						<div class="form-group">
 							<label for="carreraNombre">Nombre de Carrera:</label>
 							<input 
@@ -36,7 +36,7 @@
             			</div>
 
 						 </fieldset>
-						<button  type="submit" class="form-control btn btn-info" style="width:150px">Registrar carrera</button>
+						<button  type="submit" class="form-control btn btn-info" style="width:150px" [disabled]="myform.invalid">Registrar carrera</button>
 						<br><br>
 					</form>
 					<br>

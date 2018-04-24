@@ -25,11 +25,9 @@
 					            required
 					            [(ngModel)]="registroAlumno"/>
 						</div>
-						<p class="error" *ngIf="myform.get('matricula').hasError('minlength')">Min of 9 characters</p>
-						<p class="error" *ngIf="myform.get('matricula').hasError('maxlength')">Max of 10 characters</p>
-						<p class="error" *ngIf="myform.get('matricula').hasError('pattern')">Not an ID</p>				   
+						<p class="error" *ngIf="myform.get('matricula').hasError('pattern')">Formato no válido</p>				   
 					</fieldset>
-					<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()">Consultar</button>
+					<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()" [disabled]="myform.invalid">Consultar</button>
      		</form>
 			<br>
 			<table *ngFor="let d of hack()">

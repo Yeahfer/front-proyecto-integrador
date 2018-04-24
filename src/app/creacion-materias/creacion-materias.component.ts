@@ -86,9 +86,6 @@ onSubmit() {
       area: ['',[Validators.required]],
       tema1: ['',[Validators.required]],
       tema2: ['',[Validators.required]],
-      tema3: ['',[]],
-      tema4: ['',[]],
-      tema5: ['',[]],
     });
   }
 

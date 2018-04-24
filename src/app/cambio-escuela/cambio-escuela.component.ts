@@ -52,8 +52,6 @@ onSubmit() {
 }
 
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
 
     let url3 = `${this.apiEscuela}`;
     this.http.get(url3).subscribe(res => this.dataEscuela=res.text());
@@ -64,7 +62,11 @@ onSubmit() {
   }
 
 
-  constructor(private http: Http) {
+  constructor(private http: Http, public fb: FormBuilder) { 
+    this.myform = this.fb.group({
+      matricula: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9),
+                       Validators.pattern(/^([aA]0)([0-9]+){7}$/)]],
+    });
 
   }
 
@@ -141,20 +143,6 @@ onSubmit() {
       return JSON.parse(this.data);
     }
     return [];
-  }
-
-
-  createFormControls() {
-    this.matricula = new FormControl('', Validators.required);
-
-  }
-
-  createForm() {
-    this.myform = new FormGroup({
-      name: new FormGroup({
-        matricula: this.matricula,
-    	}),
-    });
   }
 
 }

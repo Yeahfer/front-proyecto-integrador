@@ -40,12 +40,13 @@ onSubmit() {
 }
 
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
+
   }
 
-  constructor(private http: Http) {
-
+  constructor(private http: Http, public fb: FormBuilder) { 
+    this.myform = this.fb.group({
+      tema: ['',[Validators.required, Validators.minLength(4)]],
+    });
   }
 
 
@@ -67,18 +68,6 @@ onSubmit() {
       return JSON.parse(this.data);
     }
     return [];
-  }
-
-  createFormControls() {
-    this.tema = new FormControl('', Validators.required);
-  }
-
-  createForm() {
-    this.myform = new FormGroup({
-      name: new FormGroup({
-        tema: this.tema,
-      }),
-    });
   }
 
 

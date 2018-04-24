@@ -14,7 +14,7 @@
 		      [formGroup]="myform"
 		      (ngSubmit)="onSubmit()">
 				<h2>Registro Area</h2>
-					<fieldset formGroupName="name">
+					<fieldset>
 						<div class="form-group">
 							<label for="carreraNombre">Nombre del Area:</label>
 							<input 
@@ -25,7 +25,7 @@
 					            [(ngModel)]="registroArea"/>
     			        </div>
     			    </fieldset>
-					<button  type="submit" class="form-control btn btn-info" style="width:130px" (click)="hack()">Registrar area</button>
+					<button  type="submit" class="form-control btn btn-info" style="width:130px" (click)="hack()" [disabled]="myform.invalid">Registrar area</button>
      		</form>
      		<br>
      		<ul>

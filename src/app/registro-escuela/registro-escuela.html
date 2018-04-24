@@ -14,7 +14,7 @@
 		      [formGroup]="myform"
 		      (ngSubmit)="onSubmit()">
 				<h2>Registro Escuela</h2>
-					<fieldset formGroupName="name">
+					<fieldset>
 						<div class="form-group">
 							<label for="carreraNombre">Nombre de la Escuela:</label>
 							<input 
@@ -43,7 +43,7 @@
 					            [(ngModel)]="registroMax"/>
     			        </div>
     			    </fieldset>
-					<button  type="submit" class="form-control btn btn-info" style="width:150px" (click)="hack()">Registrar escuela</button>
+					<button  type="submit" class="form-control btn btn-info" style="width:150px" (click)="hack()" [disabled]="myform.invalid">Registrar escuela</button>
      		</form>
      		<br>
      		<ul>

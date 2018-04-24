@@ -14,18 +14,17 @@
 		      [formGroup]="myform"
 		      (ngSubmit)="onSubmit()">
 				<h2>Registro Tema</h2>
-					<fieldset formGroupName="name">
+					<fieldset>
 						<div class="form-group">
 							<label for="carreraNombre">Nombre del Tema:</label>
 							<input 
 								type="text"
 					            class="form-control"
 					            formControlName="tema"
-					            required
 					            [(ngModel)]="registroTema"/>
     			        </div>
     			    </fieldset>
-					<button  type="submit" class="form-control btn btn-info" style="width:140px" (click)="hack()">Registrar tema</button>
+					<button  type="submit" class="form-control btn btn-info" style="width:140px" (click)="hack()" [disabled]="myform.invalid">Registrar tema</button>
      		</form>
      		<br>
      		<ul>

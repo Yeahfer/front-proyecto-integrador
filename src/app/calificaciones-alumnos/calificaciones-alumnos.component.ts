@@ -30,7 +30,7 @@ export class CalificacionesAlumnosComponent implements OnInit {
   apiNombres: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.courses.Course"
 
   @ViewChild('f') formVariable: NgForm;
-  constructor(private http: Http,  public fb: FormBuilder) { 
+  constructor(private http: Http, public fb: FormBuilder) { 
     this.myform = this.fb.group({
       matricula: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9),
                        Validators.pattern(/^([aA]0)([0-9]+){7}$/)]],

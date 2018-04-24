@@ -41,14 +41,14 @@ onSubmit() {
 }
 
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
 
   }
 
 
-  constructor(private http: Http) {
-
+  constructor(private http: Http, public fb: FormBuilder) { 
+    this.myform = this.fb.group({
+      area: ['',[Validators.required, Validators.minLength(4)]],
+    });
   }
 
 
@@ -72,18 +72,5 @@ onSubmit() {
     }
     return [];
   }
-
-  createFormControls() {
-    this.area = new FormControl('', Validators.required);
-  }
-
-  createForm() {
-    this.myform = new FormGroup({
-      name: new FormGroup({
-        area: this.area,
-      }),
-    });
-  }
-
 
 }

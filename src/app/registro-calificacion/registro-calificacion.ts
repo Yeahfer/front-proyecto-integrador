@@ -61,9 +61,6 @@ myMethod(){
 
 }
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
-
 
     console.log(this.dataCurso);
 
@@ -72,8 +69,13 @@ myMethod(){
   }
 
 
-  constructor(private http: Http) {
-
+  constructor(private http: Http, public fb: FormBuilder) { 
+    this.myform = this.fb.group({
+      matricula: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9),
+                       Validators.pattern(/^([aA]0)([0-9]+){7}$/)]],
+      periodo: ['', [Validators.required, Validators.minLength(4)]],
+      calificacion: ['', [Validators.required]],
+    });
   }
 
 
@@ -107,23 +109,5 @@ myMethod(){
     }
     return [];
   }
-
-  createFormControls() {
-    this.alumno = new FormControl('', Validators.required);
-    this.periodo = new FormControl('', Validators.required);
-    this.calificacion = new FormControl('', Validators.required);
-
-  }
-
-  createForm() {
-    this.myform = new FormGroup({
-      name: new FormGroup({
-        alumno : this.alumno,
-        periodo: this.alumno,
-        calificacion: this.calificacion,
-      }),
-    });
-  }
-
 
 }

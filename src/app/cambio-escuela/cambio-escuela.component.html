@@ -13,7 +13,7 @@
 					[formGroup]="myform"
 		      		(ngSubmit)="onSubmit()">
 					<h2>Registro Alumno</h2>
-					<fieldset formGroupName="name">
+					<fieldset>
 						<div class="form-group">
 							<label for="matricula">Matricula del alumno:</label>
 							<input 
@@ -74,7 +74,7 @@
       			
 
     			    </fieldset>
-						<button  type="submit" class="form-control btn btn-info" style="width:150px" (click)="hack()">Realizar cambio</button>
+						<button  type="submit" class="form-control btn btn-info" style="width:150px" (click)="hack()" [disabled]="myform.invalid">Realizar cambio</button>
 					</form>
 					<br>
 		     		<ul>

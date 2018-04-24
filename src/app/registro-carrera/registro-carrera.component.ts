@@ -45,14 +45,14 @@ export class RegistroCarreraComponent implements OnInit {
 	}
 
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
-
 
   }
 
-  constructor(private http: Http) {
-
+  constructor(private http: Http, public fb: FormBuilder) { 
+    this.myform = this.fb.group({
+      carrera: ['',[Validators.required, Validators.minLength(4)]],
+      unidades: ['',[Validators.required]],
+    });
   }
 
    doPOST() {
@@ -74,20 +74,6 @@ export class RegistroCarreraComponent implements OnInit {
       return JSON.parse(this.data);
     }
     return [];
-  }
-
-  createFormControls() {
-    this.carrera = new FormControl('', Validators.required);
-    this.unidades = new FormControl('', Validators.required);
-  }
-
-  createForm() {
-    this.myform = new FormGroup({
-      name: new FormGroup({
-        carrera: this.carrera,
-        unidades: this.unidades
-      }),
-    });
   }
 
 }

@@ -15,13 +15,13 @@
 			      [formGroup]="myform"
 			      (ngSubmit)="onSubmit()">
 						<h2>Revalidar Materia</h2>
-						<fieldset formGroupName="name">
+						<fieldset>
 						<div class="form-group">
 							<label for="carreraNombre">Matrícula del Alumno:</label>
 							<input 
 								type="text"
 					            class="form-control"
-					            formControlName="alumno"
+					            formControlName="matricula"
 					            required
 					            [(ngModel)]="registroAlumno"
 					            />
@@ -100,7 +100,7 @@
 
 
 						 </fieldset>
-						<button  type="submit" class="form-control btn btn-info" style="width:150px">Revalidar materia</button>
+						<button  type="submit" class="form-control btn btn-info" style="width:150px" [disabled]="myform.invalid">Revalidar materia</button>
 						<br><br>
 					</form>
 					<br>
