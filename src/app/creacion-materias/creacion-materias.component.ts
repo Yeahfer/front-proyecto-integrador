@@ -82,10 +82,6 @@ onSubmit() {
   constructor(private http: Http, public fb: FormBuilder) { 
     this.myform = this.fb.group({
       materia: ['',[Validators.required, Validators.minLength(4)]],
-      escuela: ['',[Validators.required]],
-      area: ['',[Validators.required]],
-      tema1: ['',[Validators.required]],
-      tema2: ['',[Validators.required]],
     });
   }
 

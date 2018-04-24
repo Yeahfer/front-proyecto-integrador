@@ -33,8 +33,7 @@
 									[ngModelOptions]="{standalone: true}">
 										<option value="-1">Selecciona una opción..</option>
 									    <option *ngFor="let d of hack4()" 
-										[ngValue]="d.schoolId"
-										formControlName="escuela" 
+										[ngValue]="d.schoolId" 
     									>
 									      {{d.name}}
 									    </option>
@@ -50,7 +49,6 @@
 										<option value="-1">Selecciona una opción..</option>
 									    <option *ngFor="let d of hack3()" 
 										[ngValue]="d.transactionId"
-										formControlName="area" 
     									>
 									      {{d.name}}
 									    </option>
@@ -65,7 +63,6 @@
 										<option value="-1">Selecciona una opción..</option>
 									    <option *ngFor="let d of hack2()" 
 										[ngValue]="d.transactionId"
-										formControlName="tema1" 
     									>
 									      {{d.name}}
 									    </option>
@@ -79,7 +76,6 @@
 										<option value="-1">Selecciona una opción..</option>
 									    <option *ngFor="let d of hack2()" 
 										[ngValue]="d.transactionId" 
-										formControlName="tema2"
     									>
 									      {{d.name}}
 									    </option>
