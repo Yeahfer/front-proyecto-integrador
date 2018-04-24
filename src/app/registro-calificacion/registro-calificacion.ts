@@ -27,7 +27,7 @@ export class RegistroCalificacion implements OnInit {
 
   apiRoot: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.students.AssignCourse"
   apiCurso: string = "http://localhost:3000/api/mx.itesm.gradeexchanger.courses.createCourseS"
-  
+
   data: string;
   dataAlumno : string;
   dataCurso: string;
@@ -56,11 +56,14 @@ onSubmit() {
 
 
 myMethod(){
-  
-  this.http.get("http://localhost:3000/api/mx.itesm.gradeexchanger.students.Student/"+this.alumno.value).subscribe(res => this.dataAlumno=res.text());  
+
+  this.http.get("http://localhost:3000/api/mx.itesm.gradeexchanger.students.Student/"+this.alumno.value).subscribe(res => this.dataAlumno=res.text());
 
 }
   ngOnInit() {
+    this.createFormControls();
+    this.createForm();
+
 
     console.log(this.dataCurso);
 
@@ -69,13 +72,8 @@ myMethod(){
   }
 
 
-  constructor(private http: Http, public fb: FormBuilder) { 
-    this.myform = this.fb.group({
-      matricula: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9),
-                       Validators.pattern(/^([aA]0)([0-9]+){7}$/)]],
-      periodo: ['', [Validators.required, Validators.minLength(4)]],
-      calificacion: ['', [Validators.required]],
-    });
+  constructor(private http: Http) {
+
   }
 
 
@@ -84,7 +82,7 @@ myMethod(){
     console.log(this.data);
 
   }
-  
+
   doGET() {
 
       if(this.dataAlumno!=null){
@@ -109,5 +107,23 @@ myMethod(){
     }
     return [];
   }
+
+  createFormControls() {
+    this.alumno = new FormControl('', Validators.required);
+    this.periodo = new FormControl('', Validators.required);
+    this.calificacion = new FormControl('', Validators.required);
+
+  }
+
+  createForm() {
+    this.myform = new FormGroup({
+      name: new FormGroup({
+        alumno : this.alumno,
+        periodo: this.alumno,
+        calificacion: this.calificacion,
+      }),
+    });
+  }
+
 
 }
