@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Cambio de escuela</title>
+		<title>Registro Alumno</title>
 		<base href="/">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
@@ -13,10 +13,10 @@
 						<form novalidate
 						[formGroup]="myform"
 						(ngSubmit)="onSubmit()">
-						<h2>Cambio de escuela</h2>
-						<fieldset>
+						<h2>Registro Alumno</h2>
+						<fieldset formGroupName="name">
 							<div class="form-group">
-								<label for="matricula">Matricula del alumno:<label class="error">*</label></label>
+								<label for="matricula">Matricula del alumno:</label>
 								<input 
 									type="text"
 									class="form-control"
@@ -24,8 +24,7 @@
 									required
 									[(ngModel)]="registroAlumno"/>
 							</div>
-							<p class="error" *ngIf="myform.get('matricula').hasError('pattern')">Formato no válido</p>
-							
+
 								<h2>Nueva Escuela</h2>
 
 									<div class="form-group">
@@ -76,7 +75,8 @@
 					
 
 						</fieldset>
-							<button  type="submit" class="form-control btn btn-info" style="width:150px" (click)="hack()" [disabled]="myform.invalid">Realizar cambio</button>
+							<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()">Registrar</button>
+							<button class="btn btn-primary" (click)="doGET()">GET</button>
 						</form>
 						<br>
 						<ul>
