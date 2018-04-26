@@ -1,3 +1,26 @@
+.container{
+    text-align: justify;
+    background: white !important;
+    padding-top: 30px !important;
+}
+
+@media screen and (min-width: 800px) {
+    .fondo{
+        background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url(../fondo.png);
+        background-size: 50% 54.5%;
+        padding-top: 75px !important;  
+        padding-bottom: 20px !important;  
+
+    }
+
+    .container{
+        text-align: justify;
+        max-width: 82%;
+        border-radius: 25px;
+    }
+
+}
+
 .error{
     color: red;
 }

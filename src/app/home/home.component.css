@@ -1,7 +1,42 @@
 .container{
     text-align: justify;
+    background: white !important;
+    padding-top: 30px;
+}
+
+@media screen and (min-width: 800px) {
+    .fondo{
+        background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url(../fondo.png);
+        background-size: 50% 50.8%;
+        padding-top: 58.5px !important;   
+    }
+
+    .container{
+        text-align: justify;
+        max-width: 82%;
+        padding-top: 10px !important;
+        margin-top: 16px;
+        border-radius: 25px;
+    }
+
+    h2{
+        padding-bottom: 20px !important;
+    }
+
+    .equipo{
+        margin-bottom: 15px !important;
+    }
 }
 
 p{
-    margin-bottom: 35px !important;
+    margin-bottom: 35px;
+}
+
+h2{
+    color: #8cc3d1;
+    text-align: center;
+}
+
+.equipo{
+    text-align: center;
 }

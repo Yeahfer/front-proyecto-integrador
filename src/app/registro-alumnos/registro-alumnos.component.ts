@@ -72,8 +72,8 @@ onSubmit() {
     this.myform = this.fb.group({
       matricula: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9),
                        Validators.pattern(/^([aA]0)([0-9]+){7}$/)]],
-      nombre: ['',[Validators.required, Validators.minLength(2)]],
-      apellido: ['',[Validators.required, Validators.minLength(2)]],
+      nombre: ['',[Validators.required, Validators.minLength(2), Validators.pattern(/^([a-zA-Z ]+)$/)]],
+      apellido: ['',[Validators.required, Validators.minLength(2), Validators.pattern(/^([a-zA-Z ]+)$/)]],
     });
   }
 

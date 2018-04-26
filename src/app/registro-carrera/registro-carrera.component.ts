@@ -51,7 +51,7 @@ export class RegistroCarreraComponent implements OnInit {
   constructor(private http: Http, public fb: FormBuilder) { 
     this.myform = this.fb.group({
       carrera: ['',[Validators.required, Validators.minLength(4)]],
-      unidades: ['',[Validators.required]],
+      unidades: ['',[Validators.required, Validators.pattern(/^([0-9]+)$/)]],
     });
   }
 

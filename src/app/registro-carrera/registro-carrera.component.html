@@ -8,43 +8,45 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-				<form novalidate
-			      [formGroup]="myform"
-			      (ngSubmit)="onSubmit()">
-						<h2>Registro Carrera</h2>
-						<fieldset>
-						<div class="form-group">
-							<label for="carreraNombre">Nombre de Carrera:</label>
-							<input 
-								type="text"
-					            class="form-control"
-					            formControlName="carrera"
-					            required
-					            [(ngModel)]="nombreCarrera"/>
-            			</div>
-						<div class="form-group">
-							<label for="carreraUnidades">Unidades de  la Carrera:</label>
-							<input 
-								type="text"
-					            class="form-control"
-					            formControlName="unidades"
-					            required
-					            [(ngModel)]="unidadesCarrera"/>
-            			</div>
-
-						 </fieldset>
-						<button  type="submit" class="form-control btn btn-info" style="width:150px" [disabled]="myform.invalid">Registrar carrera</button>
-						<br><br>
-					</form>
-					<br>
-		     		<ul>
-				    	<li *ngFor="let d of hack()"> 
-				      	{{ d.name }}
-				    	</li>
-				   </ul>
+		<div class="fondo">	
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+					<form novalidate
+					[formGroup]="myform"
+					(ngSubmit)="onSubmit()">
+							<h2>Registro Carrera</h2>
+							<fieldset>
+							<div class="form-group">
+								<label for="carreraNombre">Nombre de Carrera:<label class="error">*</label></label>
+								<input 
+									type="text"
+									class="form-control"
+									formControlName="carrera"
+									required
+									[(ngModel)]="nombreCarrera"/>
+							</div>
+							<p class="error" *ngIf="myform.get('carrera').hasError('minlength')">El nombre de la carrera es muy corto</p>
+							<div class="form-group">
+								<label for="carreraUnidades">Unidades de  la Carrera:<label class="error">*</label></label>
+								<input 
+									type="text"
+									class="form-control"
+									formControlName="unidades"
+									required
+									[(ngModel)]="unidadesCarrera"/>
+							</div>
+							<p class="error" *ngIf="myform.get('unidades').hasError('pattern')">Solo números</p>
+							</fieldset>
+							<button  type="submit" class="form-control btn btn-info" style="width:150px" [disabled]="myform.invalid">Registrar carrera</button>
+						</form>
+						<br>
+						<ul>
+							<li *ngFor="let d of hack()"> 
+							{{ d.name }}
+							</li>
+					</ul>
+					</div>
 				</div>
 			</div>
 		</div>

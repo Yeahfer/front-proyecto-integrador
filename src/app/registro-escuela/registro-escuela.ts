@@ -54,8 +54,8 @@ onSubmit() {
   constructor(private http: Http, public fb: FormBuilder) { 
     this.myform = this.fb.group({
       escuela: ['',[Validators.required, Validators.minLength(4)]],
-      min: ['',[Validators.required]],
-      max: ['',[Validators.required]],
+      min: ['',[Validators.required, Validators.pattern(/^([0-9]+)$/)]],
+      max: ['',[Validators.required, Validators.pattern(/^([0-9]+)$/)]],
     });
   }
 

@@ -8,49 +8,53 @@
 	</head>
 
 	<body>
-
-		<div class="container">
-			<form novalidate
-		      [formGroup]="myform"
-		      (ngSubmit)="onSubmit()">
-				<h2>Registro Escuela</h2>
-					<fieldset>
-						<div class="form-group">
-							<label for="carreraNombre">Nombre de la Escuela:</label>
-							<input 
-								type="text"
-					            class="form-control"
-					            formControlName="escuela"
-					            required
-					            [(ngModel)]="registroEscuela"/>
-    			        </div>
-						<div class="form-group">
-							<label for="carreraNombre">Mínimo para aprobar:</label>
-							<input 
-								type="text"
-					            class="form-control"
-					            formControlName="min"
-					            required
-					            [(ngModel)]="registroMin"/>
-    			        </div>
-						<div class="form-group">
-							<label for="carreraNombre">Máxima calificación:</label>
-							<input 
-								type="text"
-					            class="form-control"
-					            formControlName="max"
-					            required
-					            [(ngModel)]="registroMax"/>
-    			        </div>
-    			    </fieldset>
-					<button  type="submit" class="form-control btn btn-info" style="width:150px" (click)="hack()" [disabled]="myform.invalid">Registrar escuela</button>
-     		</form>
-     		<br>
-     		<ul>
-		    	<li *ngFor="let d of hack()"> 
-		      	{{ d.name }}
-		    	</li>
-		   </ul>
+		<div class="fondo">	
+			<div class="container">
+				<form novalidate
+				[formGroup]="myform"
+				(ngSubmit)="onSubmit()">
+					<h2>Registro Escuela</h2>
+						<fieldset>
+							<div class="form-group">
+								<label for="carreraNombre">Nombre de la Escuela:<label class="error">*</label></label>
+								<input 
+									type="text"
+									class="form-control"
+									formControlName="escuela"
+									required
+									[(ngModel)]="registroEscuela"/>
+							</div>
+							<p class="error" *ngIf="myform.get('escuela').hasError('minlength')">El nombre de la escuela es muy corto</p>
+							<div class="form-group">
+								<label for="carreraNombre">Mínimo para aprobar:<label class="error">*</label></label>
+								<input 
+									type="text"
+									class="form-control"
+									formControlName="min"
+									required
+									[(ngModel)]="registroMin"/>
+							</div>
+							<p class="error" *ngIf="myform.get('min').hasError('pattern')">Solo números</p>
+							<div class="form-group">
+								<label for="carreraNombre">Máxima calificación:<label class="error">*</label></label>
+								<input 
+									type="text"
+									class="form-control"
+									formControlName="max"
+									required
+									[(ngModel)]="registroMax"/>
+							</div>
+							<p class="error" *ngIf="myform.get('max').hasError('pattern')">Solo números</p>
+						</fieldset>
+						<button  type="submit" class="form-control btn btn-info" style="width:150px" (click)="hack()" [disabled]="myform.invalid">Registrar escuela</button>
+				</form>
+				<br>
+				<ul>
+					<li *ngFor="let d of hack()"> 
+					{{ d.name }}
+					</li>
+			</ul>
+			</div>
 		</div>
 	</body>
 </html>

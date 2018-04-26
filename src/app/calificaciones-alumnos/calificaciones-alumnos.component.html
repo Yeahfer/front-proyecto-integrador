@@ -8,62 +8,63 @@
 	</head>
 
 	<body>
+		<div class="fondo">	
+			<div class="container">
+				<form novalidate
+				[formGroup]="myform"
+				(ngSubmit)="onSubmit()">
+					<h2>Consulta Calificacion</h2>
+						<fieldset>
 
-		<div class="container">
-			<form novalidate
-		      [formGroup]="myform"
-		      (ngSubmit)="onSubmit()">
-				<h2>Consulta Calificacion</h2>
-					<fieldset>
-
-						<div class="form-group">
-							<label for="carreraNombre">Matrícula del Alumno:</label>
-							<input 
-								type="text"
-					            class="form-control"
-					            formControlName="matricula"
-					            required
-					            [(ngModel)]="registroAlumno"/>
-						</div>
-						<p class="error" *ngIf="myform.get('matricula').hasError('pattern')">Formato no válido</p>				   
-					</fieldset>
-					<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()" [disabled]="myform.invalid">Consultar</button>
-     		</form>
-			<br>
-			<table *ngFor="let d of hack()">
-				<tr>
-				   <th>Matricula</th>
-				   <th>Nombre</th>
-				   <th>Cursos Aprobados</th>
-				   <th>Cursos Reprobados</th>
-				</tr>
-				<tr>
-				   <td>{{d.studentId}}</td>
-				   <td>{{d.firstName}} {{d.lastName}}</td>
-				   <td>
-					   <ul *ngFor="let h of d.coursesApproved">
-							 <ul *ngFor="let j of hack2()">
-							   <div class="materias" *ngIf="h.courseId.includes(j.courseId)">
-								   <li>Materia: {{j.name}}</li>
-								   <li>Periodo: {{h.period}}</li>
-								   <li>Calificacion: {{h.grade}}</li>
-							   </div>
-						   </ul>
-					   </ul>
-				   </td>
-				   <td>
-					   <ul *ngFor="let h of d.coursesFailed">
-							 <ul *ngFor="let j of hack2()">
-							   <div clas="materias" *ngIf="h.courseId.includes(j.courseId)">
+							<div class="form-group">
+								<label for="carreraNombre">Matrícula del Alumno:<label class="error">*</label></label>
+								<input 
+									type="text"
+									class="form-control"
+									formControlName="matricula"
+									required
+									[(ngModel)]="registroAlumno"/>
+							</div>
+							<p class="error" *ngIf="myform.get('matricula').hasError('pattern')">Formato no válido</p>				   
+						</fieldset>
+						<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()" [disabled]="myform.invalid">Consultar</button>
+				</form>
+				<br>
+				<table *ngFor="let d of hack()">
+					<tr>
+					<th>Matricula</th>
+					<th>Nombre</th>
+					<th>Cursos Aprobados</th>
+					<th>Cursos Reprobados</th>
+					</tr>
+					<tr>
+					<td>{{d.studentId}}</td>
+					<td>{{d.firstName}} {{d.lastName}}</td>
+					<td>
+						<ul *ngFor="let h of d.coursesApproved">
+								<ul *ngFor="let j of hack2()">
+								<div class="materias" *ngIf="h.courseId.includes(j.courseId)">
 									<li>Materia: {{j.name}}</li>
 									<li>Periodo: {{h.period}}</li>
 									<li>Calificacion: {{h.grade}}</li>
-							   </div>
-						   </ul>
-					   </ul>
-				   </td>
-				</tr>
-			</table> 
+								</div>
+							</ul>
+						</ul>
+					</td>
+					<td>
+						<ul *ngFor="let h of d.coursesFailed">
+								<ul *ngFor="let j of hack2()">
+								<div clas="materias" *ngIf="h.courseId.includes(j.courseId)">
+										<li>Materia: {{j.name}}</li>
+										<li>Periodo: {{h.period}}</li>
+										<li>Calificacion: {{h.grade}}</li>
+								</div>
+							</ul>
+						</ul>
+					</td>
+					</tr>
+				</table> 
+			</div>
 		</div>
 	</body>
 </html>

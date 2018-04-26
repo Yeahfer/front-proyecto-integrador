@@ -8,31 +8,33 @@
 	</head>
 
 	<body>
-
-		<div class="container">
-			<form novalidate
-		      [formGroup]="myform"
-		      (ngSubmit)="onSubmit()">
-				<h2>Registro Area</h2>
-					<fieldset>
-						<div class="form-group">
-							<label for="carreraNombre">Nombre del Area:</label>
-							<input 
-								type="text"
-					            class="form-control"
-					            formControlName="area"
-					            required
-					            [(ngModel)]="registroArea"/>
-    			        </div>
-    			    </fieldset>
-					<button  type="submit" class="form-control btn btn-info" style="width:130px" (click)="hack()" [disabled]="myform.invalid">Registrar area</button>
-     		</form>
-     		<br>
-     		<ul>
-		    	<li *ngFor="let d of hack()"> 
-		      	{{ d.name }}
-		    	</li>
-		   </ul>
+		<div class="fondo">	
+			<div class="container">
+				<form novalidate
+				[formGroup]="myform"
+				(ngSubmit)="onSubmit()">
+					<h2>Registro Area</h2>
+						<fieldset>
+							<div class="form-group">
+								<label for="carreraNombre">Nombre del Area:<label class="error">*</label></label>
+								<input 
+									type="text"
+									class="form-control"
+									formControlName="area"
+									required
+									[(ngModel)]="registroArea"/>
+							</div>
+							<p class="error" *ngIf="myform.get('area').hasError('minlength')">El nombre del area es muy corto</p>
+						</fieldset>
+						<button  type="submit" class="form-control btn btn-info" style="width:130px" (click)="hack()" [disabled]="myform.invalid">Registrar area</button>
+				</form>
+				<br>
+				<ul>
+					<li *ngFor="let d of hack()"> 
+					{{ d.name }}
+					</li>
+			</ul>
+			</div>
 		</div>
 	</body>
 </html>

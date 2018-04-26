@@ -8,107 +8,109 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-				<form novalidate
-			      [formGroup]="myform"
-			      (ngSubmit)="onSubmit()">
-						<h2>Revalidar Materia</h2>
-						<fieldset>
-						<div class="form-group">
-							<label for="carreraNombre">Matrícula del Alumno:</label>
-							<input 
-								type="text"
-					            class="form-control"
-					            formControlName="matricula"
-					            required
-					            [(ngModel)]="registroAlumno"
-					            />
-            			</div>
+		<div class="fondo">	
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+					<form novalidate
+					[formGroup]="myform"
+					(ngSubmit)="onSubmit()">
+							<h2>Revalidar Materia</h2>
+							<fieldset>
+							<div class="form-group">
+								<label for="carreraNombre">Matrícula del Alumno:<label class="error">*</label></label>
+								<input 
+									type="text"
+									class="form-control"
+									formControlName="matricula"
+									required
+									[(ngModel)]="registroAlumno"
+									/>
+							</div>
 
 
-    			            	<h2>Escuela Extranjera</h2>
+									<h2>Escuela Extranjera</h2>
 
-    			        		<div class="form-group">
-									<select  class="form-control" 
-									[(ngModel)]="registroExtranjera"
-									[ngModelOptions]="{standalone: true}"
-									(ngModelChange)="onChange()"
+									<div class="form-group">
+										<select  class="form-control" 
+										[(ngModel)]="registroExtranjera"
+										[ngModelOptions]="{standalone: true}"
+										(ngModelChange)="onChange()"
 
-									>
-										<option value="-1">Selecciona una opción..</option>
-									    <option *ngFor="let d of hack4()" 
-									    [ngValue]="d.schoolId" 
-    									>
-									      {{d.name}}
-									    </option>
-									</select>
-		            			</div>
+										>
+											<option value="-1">Selecciona una opción..</option>
+											<option *ngFor="let d of hack4()" 
+											[ngValue]="d.schoolId" 
+											>
+											{{d.name}}
+											</option>
+										</select>
+									</div>
 
-						<div class="form-group">
-							<label for="carreraUnidades">Periodo de curso:</label>
-							<input 
-								type="text"
-					            class="form-control"
-					            formControlName="periodo"
-					            required
-					            [(ngModel)]="registroPeriodo"
-					            />
-            			</div>
+							<div class="form-group">
+								<label for="carreraUnidades">Periodo de curso:<label class="error">*</label></label>
+								<input 
+									type="text"
+									class="form-control"
+									formControlName="periodo"
+									required
+									[(ngModel)]="registroPeriodo"
+									/>
+							</div>
 
-		            			<h2>Materia Extranjera</h2>
+									<h2>Materia Extranjera</h2>
 
-    			        		<div class="form-group">
-									<select  class="form-control" 
-									[(ngModel)]="registroCursoExtranjero" 
-									[ngModelOptions]="{standalone: true}"
-									(ngModelChange)="onChange2()">
-										<option value="-1">Selecciona una opción..</option>
-									    <option *ngFor="let d of hack2()" 
-									    [ngValue]="d.courseId"
-    									>
-    									
-									      {{d.name}}
-									    </option>
-									</select>
-		            			</div>
+									<div class="form-group">
+										<select  class="form-control" 
+										[(ngModel)]="registroCursoExtranjero" 
+										[ngModelOptions]="{standalone: true}"
+										(ngModelChange)="onChange2()">
+											<option value="-1">Selecciona una opción..</option>
+											<option *ngFor="let d of hack2()" 
+											[ngValue]="d.courseId"
+											>
+											
+											{{d.name}}
+											</option>
+										</select>
+									</div>
 
-						<div class="form-group">
-							<label for="carreraUnidades">Calificación del curso:</label>
-							<input 
-								type="text"
-					            class="form-control"
-					            formControlName="calificacion"
-					            required
-					            [(ngModel)]="registroCalificacion"/>
-            			</div>
-		            			<h2>Materia</h2>
+							<div class="form-group">
+								<label for="carreraUnidades">Calificación del curso:<label class="error">*</label></label>
+								<input 
+									type="text"
+									class="form-control"
+									formControlName="calificacion"
+									required
+									[(ngModel)]="registroCalificacion"/>
+							</div>
+									<h2>Materia</h2>
 
-    			        		<div class="form-group">
-									<select  class="form-control" 
-									[(ngModel)]="registroCurso" 
-									[ngModelOptions]="{standalone: true}">
-										<option value="-1">Selecciona una opción..</option>
-									    <option *ngFor="let d of hack3()" 
-									    [ngValue]="d.courseId" 
-    									>
-									      {{d.name}}
-									    </option>
-									</select>
-		            			</div>
+									<div class="form-group">
+										<select  class="form-control" 
+										[(ngModel)]="registroCurso" 
+										[ngModelOptions]="{standalone: true}">
+											<option value="-1">Selecciona una opción..</option>
+											<option *ngFor="let d of hack3()" 
+											[ngValue]="d.courseId" 
+											>
+											{{d.name}}
+											</option>
+										</select>
+									</div>
 
 
-						 </fieldset>
-						<button  type="submit" class="form-control btn btn-info" style="width:150px" [disabled]="myform.invalid">Revalidar materia</button>
-						<br><br>
-					</form>
-					<br>
-		     		<ul>
-				    	<li *ngFor="let d of hack()"> 
-				      	{{ d.name }}
-				    	</li>
-				   </ul>
+							</fieldset>
+							<button  type="submit" class="form-control btn btn-info" style="width:150px" [disabled]="myform.invalid">Revalidar materia</button>
+							<br><br>
+						</form>
+						<br>
+						<ul>
+							<li *ngFor="let d of hack()"> 
+							{{ d.name }}
+							</li>
+					</ul>
+					</div>
 				</div>
 			</div>
 		</div>
