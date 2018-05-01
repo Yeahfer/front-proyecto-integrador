@@ -87,8 +87,7 @@ onSubmit() {
 
     this.http.get("http://localhost:3000/api/queries/CursosConEscuela?school_id=resource%3Amx.itesm.gradeexchanger.schools.School%23"+(JSON.parse(this.dataAlumno).school).split('#')[1]).subscribe(res => this.dataCurso=res.text());
 
-    this.http.post("http://localhost:3000/api/mx.itesm.gradeexchanger.students.AssignSchool", {"$class": "mx.itesm.gradeexchanger.students.AssignSchool", "schoolId": this.registroEscuela, "studentId": this.matricula.value}).subscribe(res => console.log(res.json()));
-
+    
   }
 
   doPOST() {
@@ -98,12 +97,13 @@ onSubmit() {
   }
   
   doGET() {
+    this.http.post("http://localhost:3000/api/mx.itesm.gradeexchanger.students.AssignSchool", {"$class": "mx.itesm.gradeexchanger.students.AssignSchool", "schoolId": this.registroEscuela, "studentId": this.matricula.value}).subscribe(res => console.log(res.json()));
 
-      console.log("GET");
-	  let url = `${this.apiRoot}`;
-	  this.http.get(url).subscribe(res => this.data=res.text());
+      //console.log("GET");
+	  //let url = `${this.apiRoot}`;
+	  //this.http.get(url).subscribe(res => this.data=res.text());
 
-	  console.log(this.data);
+	  //console.log(this.data);
 
 
   }
