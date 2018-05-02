@@ -32,8 +32,7 @@ export class CalificacionesAlumnosComponent implements OnInit {
   @ViewChild('f') formVariable: NgForm;
   constructor(private http: Http, public fb: FormBuilder) { 
     this.myform = this.fb.group({
-      matricula: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9),
-                       Validators.pattern(/^([aA]0)([0-9]+){7}$/)]],
+      matricula: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
 

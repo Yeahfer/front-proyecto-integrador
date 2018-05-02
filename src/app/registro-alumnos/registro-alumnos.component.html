@@ -24,8 +24,7 @@
 									required
 									[(ngModel)]="registroAlumno"/>
 							</div>
-							<p class="error" *ngIf="myform.get('matricula').hasError('minlength')">Matricula muy corta</p>
-							<p class="error" *ngIf="myform.get('matricula').hasError('pattern')">Formato no válido</p>	
+							<p class="error" *ngIf="myform.get('matricula').hasError('minlength')">Matricula muy corta</p>	
 							<div class="form-group">
 								<label for="nombre">Nombre del alumno:<label class="error">*</label></label>
 								<input 

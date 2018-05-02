@@ -25,7 +25,7 @@
 									required
 									[(ngModel)]="registroAlumno"/>
 							</div>
-							<p class="error" *ngIf="myform.get('matricula').hasError('pattern')">Formato no válido</p>				   
+							<p class="error" *ngIf="myform.get('matricula').hasError('minlength')">Matricula muy corta</p>				   
 						</fieldset>
 						<button  type="submit" class="form-control btn btn-info" style="width:100px" (click)="hack()" [disabled]="myform.invalid">Consultar</button>
 				</form>

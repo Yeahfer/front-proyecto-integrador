@@ -70,8 +70,7 @@ onSubmit() {
 
   constructor(private http: Http, public fb: FormBuilder) { 
     this.myform = this.fb.group({
-      matricula: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9),
-                       Validators.pattern(/^([aA]0)([0-9]+){7}$/)]],
+      matricula: ['', [Validators.required, Validators.minLength(4)]],
       nombre: ['',[Validators.required, Validators.minLength(2), Validators.pattern(/^([a-zA-Z ]+)$/)]],
       apellido: ['',[Validators.required, Validators.minLength(2), Validators.pattern(/^([a-zA-Z ]+)$/)]],
     });
